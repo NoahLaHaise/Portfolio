@@ -32,111 +32,122 @@
     <section class="section creative-section page-content">
         <div class="container">
             <h2 class="section-title">Creative Technology & Art</h2>
-            <p class="section-description">Explore my creative projects combining technology and artistic expression</p>
+            <p class="section-description">Explore my live shows and art portfolio</p>
 
-            <div class="projects-grid">
-                <!-- Project Card 1 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300/1a1a2e/16a085?text=Project+1" alt="Project 1">
-                    </div>
-                    <div class="project-info">
-                        <h3>Interactive Art Installation</h3>
-                        <p>An immersive digital art piece that responds to viewer movement using computer vision and real-time graphics processing.</p>
-                        <div class="project-tags">
-                            <span class="tag">WebGL</span>
-                            <span class="tag">Interactive</span>
-                            <span class="tag">Computer Vision</span>
+            <!-- Live Shows Section -->
+            <div class="slideshow-section">
+                <h3 class="slideshow-title">Live Shows</h3>
+                <div class="slideshow-container" id="liveShowsSlideshow">
+                    <!-- Slide 1 -->
+                    <div class="slide active">
+                        <img src="https://via.placeholder.com/1200x600/1a1a2e/00d9ff?text=Live+Show+1" alt="Live Show 1">
+                        <div class="slide-caption">
+                            <h4>Festival Performance 2024</h4>
+                            <p>Headlining set at the Electronic Arts Festival featuring custom visuals and live coding.</p>
                         </div>
-                        <a href="#" class="project-link">View Project →</a>
                     </div>
-                </div>
 
-                <!-- Project Card 2 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300/1a1a2e/e74c3c?text=Project+2" alt="Project 2">
-                    </div>
-                    <div class="project-info">
-                        <h3>Generative Visual System</h3>
-                        <p>Algorithm-driven artwork that creates unique visual compositions through code, exploring the intersection of mathematics and aesthetics.</p>
-                        <div class="project-tags">
-                            <span class="tag">Generative Art</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">P5.js</span>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <img src="https://via.placeholder.com/1200x600/1a1a2e/8338ec?text=Live+Show+2" alt="Live Show 2">
+                        <div class="slide-caption">
+                            <h4>Gallery Opening 2023</h4>
+                            <p>Interactive installation launch at the Contemporary Art Museum.</p>
                         </div>
-                        <a href="#" class="project-link">View Project →</a>
                     </div>
-                </div>
 
-                <!-- Project Card 3 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300/1a1a2e/3498db?text=Project+3" alt="Project 3">
-                    </div>
-                    <div class="project-info">
-                        <h3>3D Web Experience</h3>
-                        <p>Experimental web-based 3D environment pushing the boundaries of browser capabilities with immersive storytelling.</p>
-                        <div class="project-tags">
-                            <span class="tag">Three.js</span>
-                            <span class="tag">3D</span>
-                            <span class="tag">Animation</span>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="https://via.placeholder.com/1200x600/1a1a2e/ff006e?text=Live+Show+3" alt="Live Show 3">
+                        <div class="slide-caption">
+                            <h4>Tech Conference Showcase</h4>
+                            <p>Keynote presentation and live demonstration of generative art systems.</p>
                         </div>
-                        <a href="#" class="project-link">View Project →</a>
                     </div>
-                </div>
 
-                <!-- Project Card 4 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300/1a1a2e/9b59b6?text=Project+4" alt="Project 4">
-                    </div>
-                    <div class="project-info">
-                        <h3>Audio-Visual Synthesis</h3>
-                        <p>Real-time audio-reactive visualizations that transform sound into dynamic visual patterns and forms.</p>
-                        <div class="project-tags">
-                            <span class="tag">Web Audio API</span>
-                            <span class="tag">Canvas</span>
-                            <span class="tag">Reactive</span>
-                        </div>
-                        <a href="#" class="project-link">View Project →</a>
-                    </div>
-                </div>
+                    <!-- Navigation Arrows -->
+                    <button class="slide-arrow prev" onclick="changeSlide('liveShowsSlideshow', -1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="slide-arrow next" onclick="changeSlide('liveShowsSlideshow', 1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
 
-                <!-- Project Card 5 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300/1a1a2e/f39c12?text=Project+5" alt="Project 5">
-                    </div>
-                    <div class="project-info">
-                        <h3>Digital Sculpture Series</h3>
-                        <p>Collection of procedurally generated 3D forms exploring organic shapes through computational design.</p>
-                        <div class="project-tags">
-                            <span class="tag">Procedural</span>
-                            <span class="tag">3D Modeling</span>
-                            <span class="tag">Blender</span>
-                        </div>
-                        <a href="#" class="project-link">View Project →</a>
-                    </div>
-                </div>
-
-                <!-- Project Card 6 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300/1a1a2e/1abc9c?text=Project+6" alt="Project 6">
-                    </div>
-                    <div class="project-info">
-                        <h3>Machine Learning Art</h3>
-                        <p>Experimental project using neural networks to generate and transform visual content in novel ways.</p>
-                        <div class="project-tags">
-                            <span class="tag">ML</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">AI Art</span>
-                        </div>
-                        <a href="#" class="project-link">View Project →</a>
+                    <!-- Slide Indicators -->
+                    <div class="slide-indicators">
+                        <span class="indicator active" onclick="goToSlide('liveShowsSlideshow', 0)"></span>
+                        <span class="indicator" onclick="goToSlide('liveShowsSlideshow', 1)"></span>
+                        <span class="indicator" onclick="goToSlide('liveShowsSlideshow', 2)"></span>
                     </div>
                 </div>
             </div>
+
+            <!-- Art Portfolio Section -->
+            <div class="slideshow-section">
+                <h3 class="slideshow-title">Art Portfolio</h3>
+                <div class="slideshow-container" id="artPortfolioSlideshow">
+                    <!-- Slide 1 -->
+                    <div class="slide active">
+                        <img src="https://via.placeholder.com/1200x600/1a1a2e/1abc9c?text=Art+Portfolio+1" alt="Art Portfolio 1">
+                        <div class="slide-caption">
+                            <h4>Digital Landscapes Series</h4>
+                            <p>Procedurally generated environments exploring the relationship between nature and technology.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <img src="https://via.placeholder.com/1200x600/1a1a2e/e74c3c?text=Art+Portfolio+2" alt="Art Portfolio 2">
+                        <div class="slide-caption">
+                            <h4>Abstract Motion Studies</h4>
+                            <p>Collection of animated pieces investigating rhythm, flow, and digital materiality.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="https://via.placeholder.com/1200x600/1a1a2e/f39c12?text=Art+Portfolio+3" alt="Art Portfolio 3">
+                        <div class="slide-caption">
+                            <h4>Generative Compositions</h4>
+                            <p>Algorithmic artworks created using custom code and machine learning techniques.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="slide">
+                        <img src="https://via.placeholder.com/1200x600/1a1a2e/9b59b6?text=Art+Portfolio+4" alt="Art Portfolio 4">
+                        <div class="slide-caption">
+                            <h4>Interactive Installations</h4>
+                            <p>Immersive experiences that respond to viewer presence and interaction.</p>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <button class="slide-arrow prev" onclick="changeSlide('artPortfolioSlideshow', -1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="slide-arrow next" onclick="changeSlide('artPortfolioSlideshow', 1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <!-- Slide Indicators -->
+                    <div class="slide-indicators">
+                        <span class="indicator active" onclick="goToSlide('artPortfolioSlideshow', 0)"></span>
+                        <span class="indicator" onclick="goToSlide('artPortfolioSlideshow', 1)"></span>
+                        <span class="indicator" onclick="goToSlide('artPortfolioSlideshow', 2)"></span>
+                        <span class="indicator" onclick="goToSlide('artPortfolioSlideshow', 3)"></span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -148,5 +159,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/slideshow.js"></script>
 </body>
 </html>
