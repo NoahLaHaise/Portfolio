@@ -30,19 +30,24 @@ navLinks.forEach(link => {
 
 navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
-        e.preventDefault();
+        const href = this.getAttribute('href');
 
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
+        // Only prevent default and smooth scroll for anchor links (starting with #)
+        if (href && href.startsWith('#')) {
+            e.preventDefault();
 
-        if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+            const targetSection = document.querySelector(href);
 
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
         }
+        // For regular page links (.html files), let the default behavior happen
     });
 });
 
