@@ -70,7 +70,8 @@ a {
     z-index: -1;
 }
 
-.video-background video {
+.video-background video,
+.video-background img {
     min-width: 100%;
     min-height: 100%;
     width: auto;
