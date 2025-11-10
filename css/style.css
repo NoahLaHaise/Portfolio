@@ -251,13 +251,13 @@ a {
 
 .tagline-left {
     position: absolute;
-    right: calc(50% + 13ch); /* Adjust based on center text width */
+    right: calc(50% + 1ch); /* Position close to center bullet */
     white-space: nowrap;
 }
 
 .tagline-right {
     position: absolute;
-    left: calc(50% + 13ch); /* Adjust based on center text width */
+    left: calc(50% + 1ch); /* Position close to center bullet */
     white-space: nowrap;
 }
 
@@ -968,11 +968,11 @@ a {
     }
 
     .tagline-left {
-        right: calc(50% + 11ch);
+        right: calc(50% + 1ch);
     }
 
     .tagline-right {
-        left: calc(50% + 11ch);
+        left: calc(50% + 1ch);
     }
 
     .landing-bio {
