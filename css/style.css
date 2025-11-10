@@ -741,6 +741,17 @@ a {
     box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
 }
 
+.contact-form .btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-status {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
 /* ======================
    Footer
    ====================== */

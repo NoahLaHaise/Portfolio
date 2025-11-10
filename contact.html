@@ -67,7 +67,7 @@
                     </div>
                 </div>
 
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
@@ -84,7 +84,11 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" rows="6" required></textarea>
                     </div>
+                    <!-- Hidden field for spam protection -->
+                    <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
+                    <input type="hidden" name="_next" value="thank-you.html">
                     <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div id="form-status" class="form-status"></div>
                 </form>
             </div>
         </div>

@@ -101,48 +101,57 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ======================
-// Contact Form Handling
+// Contact Form Handling with Formspree
 // ======================
 
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+        const formStatus = document.getElementById('form-status');
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const formData = new FormData(contactForm);
 
-    // Basic validation
-    if (!name || !email || !message) {
-        alert('Please fill in all fields');
-        return;
-    }
+        // Disable submit button and show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+        formStatus.textContent = '';
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address');
-        return;
-    }
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
 
-    // In a real application, you would send this data to a server
-    // For now, we'll just show a success message
-    console.log('Form submitted:', { name, email, message });
-
-    // Show success message
-    alert('Thank you for your message! I will get back to you soon.');
-
-    // Reset form
-    contactForm.reset();
-
-    // Note: To make the contact form functional with GitHub Pages,
-    // you can integrate with services like:
-    // - Formspree (https://formspree.io/)
-    // - EmailJS (https://www.emailjs.com/)
-    // - Netlify Forms (if you host on Netlify instead)
-});
+            if (response.ok) {
+                // Success
+                formStatus.textContent = 'Thank you! Your message has been sent successfully.';
+                formStatus.style.color = 'var(--primary-color)';
+                formStatus.style.marginTop = '1rem';
+                contactForm.reset();
+            } else {
+                // Error from server
+                formStatus.textContent = 'Oops! There was a problem sending your message. Please try again.';
+                formStatus.style.color = 'var(--accent-color)';
+                formStatus.style.marginTop = '1rem';
+            }
+        } catch (error) {
+            // Network error
+            formStatus.textContent = 'Network error. Please check your connection and try again.';
+            formStatus.style.color = 'var(--accent-color)';
+            formStatus.style.marginTop = '1rem';
+        } finally {
+            // Re-enable submit button
+            submitButton.disabled = false;
+            submitButton.textContent = 'Send Message';
+        }
+    });
+}
 
 // ======================
 // Project Card Hover Effects
