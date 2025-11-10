@@ -235,6 +235,30 @@ a {
     color: var(--text-secondary);
     margin-bottom: 2rem;
     font-weight: 400;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 2.5rem;
+}
+
+.tagline-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.tagline-left {
+    position: absolute;
+    right: calc(50% + 11rem); /* Adjust based on center text width */
+    white-space: nowrap;
+}
+
+.tagline-right {
+    position: absolute;
+    left: calc(50% + 11rem); /* Adjust based on center text width */
+    white-space: nowrap;
 }
 
 .landing-bio {
@@ -943,6 +967,14 @@ a {
         font-size: 1.2rem;
     }
 
+    .tagline-left {
+        right: calc(50% + 9rem);
+    }
+
+    .tagline-right {
+        left: calc(50% + 9rem);
+    }
+
     .landing-bio {
         font-size: 1rem;
     }
@@ -1016,6 +1048,19 @@ a {
 
     .landing-title {
         font-size: 2.2rem;
+    }
+
+    .landing-tagline {
+        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .tagline-left,
+    .tagline-center,
+    .tagline-right {
+        position: static;
+        transform: none;
     }
 
     .profile-placeholder {
