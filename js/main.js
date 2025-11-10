@@ -101,59 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ======================
-// Contact Form Handling with Formspree
-// ======================
-
-const contactForm = document.getElementById('contactForm');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-
-        const formStatus = document.getElementById('form-status');
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        const formData = new FormData(contactForm);
-
-        // Disable submit button and show loading state
-        submitButton.disabled = true;
-        submitButton.textContent = 'Sending...';
-        formStatus.textContent = '';
-
-        try {
-            const response = await fetch(contactForm.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                // Success
-                formStatus.textContent = 'Thank you! Your message has been sent successfully.';
-                formStatus.style.color = 'var(--primary-color)';
-                formStatus.style.marginTop = '1rem';
-                contactForm.reset();
-            } else {
-                // Error from server
-                formStatus.textContent = 'Oops! There was a problem sending your message. Please try again.';
-                formStatus.style.color = 'var(--accent-color)';
-                formStatus.style.marginTop = '1rem';
-            }
-        } catch (error) {
-            // Network error
-            formStatus.textContent = 'Network error. Please check your connection and try again.';
-            formStatus.style.color = 'var(--accent-color)';
-            formStatus.style.marginTop = '1rem';
-        } finally {
-            // Re-enable submit button
-            submitButton.disabled = false;
-            submitButton.textContent = 'Send Message';
-        }
-    });
-}
-
-// ======================
 // Project Card Hover Effects
 // ======================
 

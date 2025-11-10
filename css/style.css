@@ -625,6 +625,14 @@ a {
     margin: 0 auto;
 }
 
+.contact-content-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 .contact-info h3 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
