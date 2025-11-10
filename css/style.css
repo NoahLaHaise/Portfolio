@@ -85,6 +85,11 @@ a {
     opacity: var(--bg-image-opacity);
 }
 
+/* Reduced opacity for non-home pages */
+.background-image.other-page {
+    opacity: 0.2; /* 10% less than home page (0.3 - 0.1 = 0.2) */
+}
+
 .video-overlay {
     position: absolute;
     top: 0;
