@@ -361,7 +361,7 @@ a {
    ====================== */
 
 .resume-section {
-    background-color: var(--bg-secondary);
+    /* Background removed to show tiled background */
 }
 
 .resume-content {
@@ -486,7 +486,7 @@ a {
    ====================== */
 
 .creative-section {
-    background-color: var(--bg-primary);
+    /* Background removed to show tiled background */
 }
 
 .projects-grid {
@@ -590,7 +590,7 @@ a {
    ====================== */
 
 .contact-section {
-    background-color: var(--bg-secondary);
+    /* Background removed to show tiled background */
 }
 
 .contact-content {
