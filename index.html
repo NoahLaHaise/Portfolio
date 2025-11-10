@@ -3,209 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional Portfolio - Resume, Creative Technology & Art">
+    <meta name="description" content="Portfolio - Developer, Artist, Creator">
     <title>Portfolio - Your Name</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="home-page">
+    <!-- Background Video Container (add your video here) -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="bgVideo">
+            <!-- Add your video source here -->
+            <!-- <source src="assets/background-video.mp4" type="video/mp4"> -->
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar home-navbar">
         <div class="container">
             <div class="logo">
                 <h1>Portfolio</h1>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#resume" class="nav-link">Resume</a></li>
-                <li><a href="#creative" class="nav-link">Creative & Tech</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Hero/Landing Section -->
+    <main class="landing-hero">
         <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Welcome to My Portfolio</h1>
-                <p class="hero-subtitle">Professional Developer & Creative Technologist</p>
-                <a href="#resume" class="btn btn-primary">Explore My Work</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" class="section resume-section">
-        <div class="container">
-            <h2 class="section-title">Professional Resume</h2>
-            <div class="resume-content">
-
-                <!-- Experience -->
-                <div class="resume-block">
-                    <h3>Work Experience</h3>
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <h4>Job Title</h4>
-                            <span class="date">2020 - Present</span>
-                        </div>
-                        <p class="company">Company Name</p>
-                        <ul class="responsibilities">
-                            <li>Key responsibility or achievement</li>
-                            <li>Another important contribution</li>
-                            <li>Notable project or impact</li>
-                        </ul>
-                    </div>
-                    <!-- Add more experience items as needed -->
-                </div>
-
-                <!-- Education -->
-                <div class="resume-block">
-                    <h3>Education</h3>
-                    <div class="education-item">
-                        <div class="education-header">
-                            <h4>Degree Name</h4>
-                            <span class="date">Graduation Year</span>
-                        </div>
-                        <p class="institution">University Name</p>
-                        <p class="description">Major/Focus area and relevant coursework</p>
+            <div class="landing-content">
+                <!-- Profile Image (optional) -->
+                <div class="profile-image">
+                    <div class="profile-placeholder">
+                        <!-- Add your profile image here -->
+                        <span>YN</span>
                     </div>
                 </div>
 
-                <!-- Skills -->
-                <div class="resume-block">
-                    <h3>Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <h4>Technical</h4>
-                            <ul>
-                                <li>JavaScript</li>
-                                <li>HTML/CSS</li>
-                                <li>React</li>
-                                <li>Node.js</li>
-                            </ul>
-                        </div>
-                        <div class="skill-category">
-                            <h4>Tools</h4>
-                            <ul>
-                                <li>Git</li>
-                                <li>VS Code</li>
-                                <li>Figma</li>
-                                <li>Adobe Suite</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <h1 class="landing-title">Your Name</h1>
+                <p class="landing-tagline">Developer • Creative Technologist • Artist</p>
 
-    <!-- Creative Technology / Art Section -->
-    <section id="creative" class="section creative-section">
-        <div class="container">
-            <h2 class="section-title">Creative Technology & Art</h2>
-            <p class="section-description">Explore my creative projects combining technology and artistic expression</p>
-
-            <div class="projects-grid">
-                <!-- Project Card 1 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300" alt="Project 1">
-                    </div>
-                    <div class="project-info">
-                        <h3>Project Title 1</h3>
-                        <p>Brief description of the creative project, technology used, and artistic vision.</p>
-                        <div class="project-tags">
-                            <span class="tag">Web GL</span>
-                            <span class="tag">Interactive</span>
-                        </div>
-                        <a href="#" class="project-link">View Project →</a>
-                    </div>
+                <div class="landing-bio">
+                    <p>
+                        Welcome to my digital space. I'm a creative technologist passionate about
+                        building innovative experiences that blend code, design, and art.
+                        I specialize in web development and interactive media,
+                        pushing the boundaries of what's possible in the browser.
+                    </p>
                 </div>
 
-                <!-- Project Card 2 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300" alt="Project 2">
-                    </div>
-                    <div class="project-info">
-                        <h3>Project Title 2</h3>
-                        <p>Another creative technology project showcasing innovation and artistry.</p>
-                        <div class="project-tags">
-                            <span class="tag">Generative Art</span>
-                            <span class="tag">JavaScript</span>
+                <!-- Navigation Cards -->
+                <div class="landing-cards">
+                    <a href="resume.html" class="landing-card">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
                         </div>
-                        <a href="#" class="project-link">View Project →</a>
-                    </div>
-                </div>
+                        <h3>Professional Resume</h3>
+                        <p>Explore my work experience, skills, and professional background</p>
+                        <span class="card-arrow">→</span>
+                    </a>
 
-                <!-- Project Card 3 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300" alt="Project 3">
-                    </div>
-                    <div class="project-info">
-                        <h3>Project Title 3</h3>
-                        <p>Experimental work pushing the boundaries of web-based art and technology.</p>
-                        <div class="project-tags">
-                            <span class="tag">3D</span>
-                            <span class="tag">Animation</span>
+                    <a href="creative.html" class="landing-card">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                                <line x1="7" y1="2" x2="7" y2="22"></line>
+                                <line x1="17" y1="2" x2="17" y2="22"></line>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <line x1="2" y1="7" x2="7" y2="7"></line>
+                                <line x1="2" y1="17" x2="7" y2="17"></line>
+                                <line x1="17" y1="17" x2="22" y2="17"></line>
+                                <line x1="17" y1="7" x2="22" y2="7"></line>
+                            </svg>
                         </div>
-                        <a href="#" class="project-link">View Project →</a>
-                    </div>
+                        <h3>Creative Technology & Art</h3>
+                        <p>Discover my creative projects and experimental works</p>
+                        <span class="card-arrow">→</span>
+                    </a>
+
+                    <a href="contact.html" class="landing-card">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Get In Touch</h3>
+                        <p>Let's connect and discuss opportunities or collaborations</p>
+                        <span class="card-arrow">→</span>
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-description">Let's connect and discuss opportunities</p>
-
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="info-item">
-                        <strong>Email:</strong>
-                        <a href="mailto:your.email@example.com">your.email@example.com</a>
-                    </div>
-                    <div class="info-item">
-                        <strong>Location:</strong>
-                        <span>City, Country</span>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="LinkedIn">LinkedIn</a>
-                        <a href="#" class="social-link" aria-label="GitHub">GitHub</a>
-                        <a href="#" class="social-link" aria-label="Twitter">Twitter</a>
-                    </div>
-                </div>
-
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer landing-footer">
         <div class="container">
             <p>&copy; 2024 Your Name. All rights reserved.</p>
         </div>
