@@ -264,7 +264,7 @@ a {
 .landing-bio {
     max-width: 600px;
     margin: 0 auto 3rem;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     font-size: 1.1rem;
     line-height: 1.8;
 }
