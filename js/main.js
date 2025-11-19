@@ -1,145 +1,102 @@
-// ======================
-// Mobile Navigation Toggle
-// ======================
-
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
-
-// Toggle mobile menu
-function toggleMenu() {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-}
-
-// Close menu when link is clicked
-function closeMenu() {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-}
-
-hamburger.addEventListener('click', toggleMenu);
-
-navLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
-});
-
-// ======================
-// Smooth Scrolling
-// ======================
-
-navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-
-        // Only prevent default and smooth scroll for anchor links (starting with #)
-        if (href && href.startsWith('#')) {
-            e.preventDefault();
-
-            const targetSection = document.querySelector(href);
-
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
-
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        }
-        // For regular page links (.html files), let the default behavior happen
-    });
-});
-
-// ======================
-// Navbar Background on Scroll
-// ======================
-
-const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 100) {
-        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
-    } else {
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    }
-
-    lastScroll = currentScroll;
-});
-
-// ======================
-// Intersection Observer for Fade-in Animations
-// ======================
-
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe sections for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.section');
+    console.log('SYSTEM_INIT: ONLINE');
 
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(section);
-    });
-});
+    // Navigation Active State
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-link');
 
-// ======================
-// Project Card Hover Effects
-// ======================
-
-const projectCards = document.querySelectorAll('.project-card');
-
-projectCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px)';
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPath.split('/').pop()) {
+            link.classList.add('active');
+        }
     });
 
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
+    // Glitch Effect Randomizer
+    const glitchTexts = document.querySelectorAll('.glitch-text');
 
-// ======================
-// Lazy Loading for Images (Optional Enhancement)
-// ======================
-
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.add('loaded');
-                imageObserver.unobserve(img);
+    glitchTexts.forEach(text => {
+        setInterval(() => {
+            const originalText = text.getAttribute('data-text');
+            if (Math.random() > 0.95) {
+                text.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+                setTimeout(() => {
+                    text.style.transform = 'none';
+                }, 50);
             }
+        }, 2000);
+    });
+
+    // Smooth Scroll for Anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
 
-    // If you add data-src attributes to images, they'll lazy load
-    const images = document.querySelectorAll('img[data-src]');
-    images.forEach(img => imageObserver.observe(img));
+    // Form Submission Simulation
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+
+            btn.innerText = 'TRANSMITTING...';
+            btn.style.opacity = '0.7';
+
+            setTimeout(() => {
+                btn.innerText = 'DATA_SENT';
+                btn.style.color = 'var(--acid-green)';
+                btn.style.borderColor = 'var(--acid-green)';
+
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.color = '';
+                    btn.style.borderColor = '';
+                    btn.style.opacity = '1';
+                    form.reset();
+                }, 2000);
+            }, 1500);
+        });
+    });
+
+    // Slideshow Logic
+    if (document.querySelector('.slideshow-container')) {
+        showSlides(slideIndex);
+    }
+});
+
+let slideIndex = 1;
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
 }
 
-// ======================
-// Console Welcome Message
-// ======================
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
 
-console.log('%cWelcome to my Portfolio!', 'color: #2563eb; font-size: 20px; font-weight: bold;');
-console.log('%cInterested in the code? Check out the repository!', 'color: #6b7280; font-size: 14px;');
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("slide");
+    let dots = document.getElementsByClassName("dot");
+    if (slides.length === 0) return;
+
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active-dot", "");
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    if (dots.length > 0) {
+        dots[slideIndex - 1].className += " active-dot";
+    }
+}

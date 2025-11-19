@@ -1,167 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative Technology & Art Projects">
-    <title>Creative & Tech - Portfolio</title>
+    <meta name="description" content="Noah LaHaise - Creative Projects">
+    <title>CREATIVE // NOAH LAHAISE</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <!-- Background Image -->
-    <div class="video-background">
-        <div class="background-image other-page"></div>
-    </div>
+    <div class="bg-glitch"></div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <a href="index.html"><h1>Portfolio</h1></a>
+                <a href="index.html">
+                    <h1>NOAH_LAHAISE<span class="text-neon">_</span></h1>
+                </a>
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="resume.html" class="nav-link">Resume</a></li>
-                <li><a href="creative.html" class="nav-link active">Creative & Tech</a></li>
+                <li><a href="creative.html" class="nav-link active">Creative</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
-    <!-- Creative Technology / Art Section -->
-    <section class="section creative-section page-content">
+    <section class="section">
         <div class="container">
-            <h2 class="section-title">Creative Technology & Art</h2>
-            <p class="section-description">Explore my live shows and art portfolio</p>
+            <header class="page-header">
+                <span class="mono-label">FILE: CREATIVE_WORKS.DAT</span>
+                <h2 class="page-title">VISUAL_ARCHIVE</h2>
+            </header>
 
-            <!-- Live Shows Section -->
-            <div class="slideshow-section">
-                <div class="slideshow-container" id="liveShowsSlideshow">
-                    <!-- Slide 1 -->
-                    <div class="slide active">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/00d9ff" alt="">
-                        <div class="slide-caption">
-                            <h4>Festival Performance 2024</h4>
-                            <p>Headlining set at the Electronic Arts Festival featuring custom visuals and live coding.</p>
-                        </div>
-                    </div>
+            <!-- Slideshow Container -->
+            <div class="slideshow-container">
 
-                    <!-- Slide 2 -->
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/8338ec" alt="">
-                        <div class="slide-caption">
-                            <h4>Gallery Opening 2023</h4>
-                            <p>Interactive installation launch at the Contemporary Art Museum.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/ff006e" alt="">
-                        <div class="slide-caption">
-                            <h4>Tech Conference Showcase</h4>
-                            <p>Keynote presentation and live demonstration of generative art systems.</p>
-                        </div>
-                    </div>
-
-                    <!-- Navigation Arrows -->
-                    <button class="slide-arrow prev" onclick="changeSlide('liveShowsSlideshow', -1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-                    <button class="slide-arrow next" onclick="changeSlide('liveShowsSlideshow', 1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-
-                    <!-- Slide Indicators -->
-                    <div class="slide-indicators">
-                        <span class="indicator active" onclick="goToSlide('liveShowsSlideshow', 0)"></span>
-                        <span class="indicator" onclick="goToSlide('liveShowsSlideshow', 1)"></span>
-                        <span class="indicator" onclick="goToSlide('liveShowsSlideshow', 2)"></span>
+                <!-- Slide 1 -->
+                <div class="slide fade">
+                    <div class="slide-number">01 / 05</div>
+                    <img src="assets\festival_performance.png" alt=" Festival Performance">
+                    <div class="slide-caption">
+                        <h3 class="text-neon">ELECTRONIC ARTS FESTIVAL</h3>
+                        <p class="mono-label">LIVE CODING / VISUALS</p>
                     </div>
                 </div>
+
+                <!-- Slide 2 -->
+                <div class="slide fade">
+                    <div class="slide-number">02 / 05</div>
+                    <img src="https://via.placeholder.com/1200x600/111/bc13fe?text=GALLERY+INSTALLATION"
+                        alt="Gallery Installation">
+                    <div class="slide-caption">
+                        <h3 class="text-purple">CONTEMPORARY MUSEUM</h3>
+                        <p class="mono-label">INTERACTIVE INSTALLATION</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide fade">
+                    <div class="slide-number">03 / 05</div>
+                    <img src="https://via.placeholder.com/1200x600/111/ccff00?text=DIGITAL+LANDSCAPES"
+                        alt="Digital Landscapes">
+                    <div class="slide-caption">
+                        <h3 class="text-acid">DIGITAL LANDSCAPES</h3>
+                        <p class="mono-label">PROCEDURAL GENERATION</p>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="slide fade">
+                    <div class="slide-number">04 / 05</div>
+                    <img src="https://via.placeholder.com/1200x600/111/ff2a2a?text=MOTION+STUDIES" alt="Motion Studies">
+                    <div class="slide-caption">
+                        <h3 class="text-neon">MOTION STUDIES</h3>
+                        <p class="mono-label">ALGORITHMIC ANIMATION</p>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="slide fade">
+                    <div class="slide-number">05 / 05</div>
+                    <img src="https://via.placeholder.com/1200x600/111/ffffff?text=AI+COMPOSITIONS"
+                        alt="AI Compositions">
+                    <div class="slide-caption">
+                        <h3 class="text-purple">COMPOSITIONS</h3>
+                        <p class="mono-label">MACHINE LEARNING</p>
+                    </div>
+                </div>
+
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
+            <br>
 
-            <!-- Art Portfolio Section -->
-            <div class="slideshow-section">
-                <div class="slideshow-container" id="artPortfolioSlideshow">
-                    <!-- Slide 1 -->
-                    <div class="slide active">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/1abc9c" alt="">
-                        <div class="slide-caption">
-                            <h4>Digital Landscapes Series</h4>
-                            <p>Procedurally generated environments exploring the relationship between nature and technology.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/e74c3c" alt="">
-                        <div class="slide-caption">
-                            <h4>Abstract Motion Studies</h4>
-                            <p>Collection of animated pieces investigating rhythm, flow, and digital materiality.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/f39c12" alt="">
-                        <div class="slide-caption">
-                            <h4>Generative Compositions</h4>
-                            <p>Algorithmic artworks created using custom code and machine learning techniques.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 4 -->
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/9b59b6" alt="">
-                        <div class="slide-caption">
-                            <h4>Interactive Installations</h4>
-                            <p>Immersive experiences that respond to viewer presence and interaction.</p>
-                        </div>
-                    </div>
-
-                    <!-- Navigation Arrows -->
-                    <button class="slide-arrow prev" onclick="changeSlide('artPortfolioSlideshow', -1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-                    <button class="slide-arrow next" onclick="changeSlide('artPortfolioSlideshow', 1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-
-                    <!-- Slide Indicators -->
-                    <div class="slide-indicators">
-                        <span class="indicator active" onclick="goToSlide('artPortfolioSlideshow', 0)"></span>
-                        <span class="indicator" onclick="goToSlide('artPortfolioSlideshow', 1)"></span>
-                        <span class="indicator" onclick="goToSlide('artPortfolioSlideshow', 2)"></span>
-                        <span class="indicator" onclick="goToSlide('artPortfolioSlideshow', 3)"></span>
-                    </div>
-                </div>
+            <!-- The dots/circles -->
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
             </div>
 
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <p>NOAH LAHAISE © 2024 // ALL RIGHTS RESERVED</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/slideshow.js"></script>
 </body>
+
 </html>

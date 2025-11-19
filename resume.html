@@ -1,147 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional Resume">
-    <title>Resume - Portfolio</title>
+    <meta name="description" content="Noah LaHaise - Resume">
+    <title>RESUME // NOAH LAHAISE</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <!-- Background Image -->
-    <div class="video-background">
-        <div class="background-image other-page"></div>
-    </div>
+    <div class="bg-glitch"></div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <a href="index.html"><h1>Portfolio</h1></a>
+                <a href="index.html">
+                    <h1>NOAH_LAHAISE<span class="text-neon">_</span></h1>
+                </a>
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="resume.html" class="nav-link active">Resume</a></li>
-                <li><a href="creative.html" class="nav-link">Creative & Tech</a></li>
+                <li><a href="creative.html" class="nav-link">Creative</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
-    <!-- Resume Section -->
-    <section class="section resume-section page-content">
+    <section class="section">
         <div class="container">
-            <h2 class="section-title">Professional Resume</h2>
-            <div class="resume-content">
+            <header class="page-header">
+                <span class="mono-label">FILE: RESUME.DAT</span>
+                <h2 class="page-title">PROFESSIONAL_LOG</h2>
+            </header>
 
-                <!-- Experience -->
-                <div class="resume-block">
-                    <h3>Work Experience</h3>
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <h4>Software Developer II</h4>
-                            <span class="date">2022 - Present</span>
-                        </div>
-                        <p class="company">RF-SMART</p>
-                        <ul class="responsibilities">
-                            <li>Lead software developer on the RF-SMART for D365 product</li>
-                            <li>Works on internal AI tooling that makes our support representatives more efficient and helps the sales team with key insights.</li>
-                            <li>Notable project or impact</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <h4>Previous Job Title</h4>
-                            <span class="date">2018 - 2020</span>
-                        </div>
-                        <p class="company">Previous Company</p>
-                        <ul class="responsibilities">
-                            <li>Key responsibility or achievement</li>
-                            <li>Another important contribution</li>
-                            <li>Notable project or impact</li>
-                        </ul>
-                    </div>
-                </div>
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 4rem;">
 
-                <!-- Education -->
-                <div class="resume-block">
-                    <h3>Education</h3>
-                    <div class="education-item">
-                        <div class="education-header">
-                            <h4>Bachelors in Finance & Minor in Computer Science</h4>
-                        </div>
-                        <p class="institution">University of North Florida</p>
-                        <p class="description">Graduated Spring 2023</p>
-                    </div>
-                </div>
+                <!-- Experience Column -->
+                <div>
+                    <h3 class="text-neon" style="margin-bottom: 2rem;">// EXPERIENCE_TIMELINE</h3>
 
-                <!-- Skills -->
-                <div class="resume-block">
-                    <h3>Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <h4>Technical</h4>
-                            <ul>
-                                <li>Python</li>
-                                <li>C#</li>
-                                <li>X++</li>
-                                <li>SQL</li>
-                                <li>Python</li>
-                                <li>HTML/CSS</li>
+                    <div class="timeline">
+                        <!-- Job 1 -->
+                        <div class="timeline-item">
+                            <span class="timeline-date">2022 - PRESENT</span>
+                            <h4 class="timeline-title">SOFTWARE DEVELOPER II</h4>
+                            <p class="timeline-company">RF-SMART</p>
+                            <ul style="list-style: disc; padding-left: 1rem; color: var(--text-secondary);">
+                                <li>Lead software developer on the RF-SMART for D365 product.</li>
+                                <li>Developing internal AI tooling to enhance support efficiency and sales insights.
+                                </li>
+                                <li>Architected scalable solutions for warehouse operations.</li>
                             </ul>
                         </div>
-                        <div class="skill-category">
-                            <h4>Tools & Frameworks</h4>
-                            <ul>
-                                <li>Git & GitHub</li>
-                                <li>VS & VS Code</li>
-                                <li>SQL Server</li>
-                                <li>PostgreSQL</li>
-                                <li>Docker</li>
-                                <li>AWS</li>
+
+                        <!-- Job 2 -->
+                        <div class="timeline-item">
+                            <span class="timeline-date">2018 - 2020</span>
+                            <h4 class="timeline-title">PREVIOUS JOB TITLE</h4>
+                            <p class="timeline-company">PREVIOUS COMPANY</p>
+                            <ul style="list-style: disc; padding-left: 1rem; color: var(--text-secondary);">
+                                <li>Key responsibility or achievement in previous role.</li>
+                                <li>Another important contribution to the team.</li>
+                                <li>Notable project or impact delivered.</li>
                             </ul>
                         </div>
-                        <div class="skill-category">
-                            <h4>Soft Skills</h4>
-                            <ul>
-                                <li>Problem Solving</li>
-                                <li>Team Collaboration</li>
-                                <li>Communication</li>
-                                <li>Project Management</li>
-                                <li>Agile/Scrum</li>
-                                <li>Leadership</li>
-                            </ul>
+                    </div>
+
+                    <h3 class="text-neon" style="margin-bottom: 2rem; margin-top: 4rem;">// EDUCATION_LOG</h3>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-date">SPRING 2023</span>
+                            <h4 class="timeline-title">BACHELORS IN FINANCE</h4>
+                            <p class="timeline-company">UNIVERSITY OF NORTH FLORIDA</p>
+                            <p style="color: var(--text-secondary);">Minor in Computer Science</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Projects -->
-                <div class="resume-block">
-                    <h3>Technical Projects</h3>
-                    <div class="project-item">
-                        <div class="project-header">
-                            <h4>Project Name</h4>
-                            <span class="date">Year</span>
+                <!-- Skills Column -->
+                <div>
+                    <h3 class="text-purple" style="margin-bottom: 2rem;">// SKILL_MATRIX</h3>
+
+                    <div style="background: var(--bg-panel); padding: 2rem; border: 1px solid var(--border-light);">
+
+                        <h4 style="margin-bottom: 1.5rem; color: var(--text-primary);">LANGUAGES</h4>
+
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>PYTHON</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill" style="width: 95%;"></div>
+                            </div>
                         </div>
-                        <p class="project-description">Brief description of the project, its purpose, and the problem it solves.</p>
-                        <div class="project-tech">
-                            <strong>Technologies:</strong> <span>Python, React, PostgreSQL, Docker</span>
+
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>C# / .NET</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill" style="width: 90%;"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-header">
-                            <h4>Another Project</h4>
-                            <span class="date">Year</span>
+
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>JAVASCRIPT</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill" style="width: 85%;"></div>
+                            </div>
                         </div>
-                        <p class="project-description">Description of another technical project and its impact.</p>
-                        <div class="project-tech">
-                            <strong>Technologies:</strong> <span>JavaScript, Node.js, MongoDB, AWS</span>
+
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>SQL</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill" style="width: 80%;"></div>
+                            </div>
                         </div>
+
+                        <h4 style="margin-bottom: 1.5rem; margin-top: 2.5rem; color: var(--text-primary);">TOOLS</h4>
+
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <span class="hero-tag" style="margin: 0;">DOCKER</span>
+                            <span class="hero-tag" style="margin: 0;">AWS</span>
+                            <span class="hero-tag" style="margin: 0;">GIT</span>
+                            <span class="hero-tag" style="margin: 0;">TOUCHDESIGNER</span>
+                            <span class="hero-tag" style="margin: 0;">POSTGRESQL</span>
+                        </div>
+
                     </div>
                 </div>
 
@@ -149,13 +146,13 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <p>NOAH LAHAISE © 2024 // ALL RIGHTS RESERVED</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
 </body>
+
 </html>

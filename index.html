@@ -1,106 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio - Developer, Artist, Creator">
-    <title>Portfolio - Your Name</title>
+    <meta name="description" content="Noah LaHaise - Creative Technologist">
+    <title>NOAH LAHAISE // PORTFOLIO</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="home-page">
-    <!-- Background Video/Image Container -->
-    <div class="video-background">
-        <div class="background-image"></div>
-    </div>
+
+<body>
+    <div class="bg-glitch"></div>
 
     <!-- Navigation -->
-    <nav class="navbar home-navbar">
+    <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <h1>Portfolio</h1>
+                <h1>NOAH_LAHAISE<span class="text-neon">_</span></h1>
             </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="resume.html" class="nav-link">Resume</a></li>
+                <li><a href="creative.html" class="nav-link">Creative</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Hero/Landing Section -->
-    <main class="landing-hero">
-        <div class="container">
-            <div class="landing-content">
-                <h1 class="landing-title">Noah LaHaise</h1>
-                <p class="landing-tagline">
-                    <span class="tagline-left">Software Dev.</span>
-                    <span class="tagline-center">• </span>
-                    <span class="tagline-right">Visual Artist</span>
+    <!-- Hero Section -->
+    <main class="hero-section">
+        <div class="hero-grid"></div>
+
+        <div class="container hero-content">
+            <span class="hero-tag">SYSTEM_STATUS: ONLINE</span>
+
+            <h1 class="hero-title">
+                CREATIVE<br>
+                <span class="text-neon glitch-text" data-text="TECHNOLOGIST">TECHNOLOGIST</span>
+            </h1>
+
+            <div class="hero-bio">
+                <p>
+                    Software Developer & Visual Artist.<br>
+                    Specializing in <span class="text-acid">Warehouse Efficiency Systems</span>
+                    and <span class="text-purple">Generative Art</span>.
                 </p>
+            </div>
 
-                <div class="landing-bio">
-                    <p>
-                        I am a software developer with 3.5 years of professional experience.
-                        Currently, I specialize in developing systems that make warehouse operations more efficient, while also working on 
-                        internal AI tooling that provides our sales representatives with better insights and data. 
-                        In addition to my professional work, I am passionate about creative technology and visual art. In my free time,
-                        I work in Touchdesigner to create experimental art pieces that explore the intersection of technology and creativity.
-                    </p>
-                </div>
+            <!-- Navigation Modules -->
+            <div class="nav-cards">
+                <a href="resume.html" class="nav-card">
+                    <span class="mono-label">MODULE_01</span>
+                    <h3>RESUME_DATA</h3>
+                    <p>Access professional history, skills matrix, and technical capabilities.</p>
+                    <div class="nav-card-arrow">→</div>
+                </a>
 
-                <!-- Navigation Cards -->
-                <div class="landing-cards">
-                    <a href="resume.html" class="landing-card">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
-                            </svg>
-                        </div>
-                        <h3>Professional Resume</h3>
-                        <p>Explore my work experience, skills, and professional background</p>
-                        <span class="card-arrow">→</span>
-                    </a>
+                <a href="creative.html" class="nav-card">
+                    <span class="mono-label">MODULE_02</span>
+                    <h3>VISUAL_ARTS</h3>
+                    <p>Experimental projects, TouchDesigner works, and creative coding.</p>
+                    <div class="nav-card-arrow">→</div>
+                </a>
 
-                    <a href="creative.html" class="landing-card">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-                                <line x1="7" y1="2" x2="7" y2="22"></line>
-                                <line x1="17" y1="2" x2="17" y2="22"></line>
-                                <line x1="2" y1="12" x2="22" y2="12"></line>
-                                <line x1="2" y1="7" x2="7" y2="7"></line>
-                                <line x1="2" y1="17" x2="7" y2="17"></line>
-                                <line x1="17" y1="17" x2="22" y2="17"></line>
-                                <line x1="17" y1="7" x2="22" y2="7"></line>
-                            </svg>
-                        </div>
-                        <h3>Creative Technology & Art</h3>
-                        <p>Discover my creative projects and experimental works</p>
-                        <span class="card-arrow">→</span>
-                    </a>
-
-                    <a href="contact.html" class="landing-card">
-                        <div class="card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                        </div>
-                        <h3>Contact Information</h3>
-                        <p>Let's connect and discuss opportunities or collaborations</p>
-                        <span class="card-arrow">→</span>
-                    </a>
-                </div>
+                <a href="contact.html" class="nav-card">
+                    <span class="mono-label">MODULE_03</span>
+                    <h3>COMM_LINK</h3>
+                    <p>Establish connection. Open channels for collaboration.</p>
+                    <div class="nav-card-arrow">→</div>
+                </a>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer landing-footer">
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
+            <p>NOAH LAHAISE © 2024 // ALL RIGHTS RESERVED</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
 </body>
+
 </html>
