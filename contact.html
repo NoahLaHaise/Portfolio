@@ -3,80 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Get In Touch">
-    <title>Contact - Portfolio</title>
+    <meta name="description" content="Contact - Noah LaHaise">
+    <title>CONTACT.SYS // NOAH_LAHAISE</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <!-- Background Image -->
-    <div class="video-background">
-        <div class="background-image other-page"></div>
-    </div>
+<body class="contact-page">
+    <!-- Scanline Overlay -->
+    <div class="scanlines"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><h1>Portfolio</h1></a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="resume.html" class="nav-link">Resume</a></li>
-                <li><a href="creative.html" class="nav-link">Creative & Tech</a></li>
-                <li><a href="contact.html" class="nav-link active">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+    <!-- Grid Background -->
+    <div class="grid-bg"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="top-nav">
+        <a href="index.html" class="nav-link">[HOME]</a>
+        <span class="nav-sep">//</span>
+        <a href="resume.html" class="nav-link">[RESUME]</a>
+        <span class="nav-sep">//</span>
+        <a href="creative.html" class="nav-link">[CREATIVE]</a>
+        <span class="nav-sep">//</span>
+        <a href="contact.html" class="nav-link active">[CONTACT]</a>
     </nav>
 
-    <!-- Contact Section -->
-    <section class="section contact-section page-content">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-description">Let's connect and discuss opportunities</p>
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="header-tag">&lt;CONTACT_INFORMATION&gt;</div>
+            <h1 class="page-title glitch-text" data-text="CONNECT">CONNECT</h1>
+        </header>
 
-            <div class="contact-content-centered">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="info-item">
-                        <strong>Email:</strong>
-                        <a href="mailto:your.email@example.com">your.email@example.com</a>
+        <!-- Contact Terminal -->
+        <section class="contact-terminal">
+            <div class="terminal-window">
+                <div class="terminal-bar">
+                    <span class="terminal-title">&gt;_ CONTACT.sh</span>
+                    <div class="terminal-dots">
+                        <span></span><span></span><span></span>
                     </div>
-                    <div class="info-item">
-                        <strong>Location:</strong>
-                        <span>City, Country</span>
+                </div>
+
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">$</span>
+                        <span class="command">cat contact_info.txt</span>
                     </div>
-                    <div class="info-item">
-                        <strong>Availability:</strong>
-                        <span>Open to opportunities</span>
+
+                    <div class="contact-data">
+                        <div class="data-line">
+                            <span class="data-key">EMAIL:</span>
+                            <a href="mailto:your.email@example.com" class="data-value link-hover">your.email@example.com</a>
+                        </div>
+
+                        <div class="data-line">
+                            <span class="data-key">LOCATION:</span>
+                            <span class="data-value">City, Country</span>
+                        </div>
+
+                        <div class="data-line">
+                            <span class="data-key">STATUS:</span>
+                            <span class="data-value status-active">OPEN_TO_OPPORTUNITIES</span>
+                        </div>
                     </div>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <span>LinkedIn</span>
+
+                    <div class="terminal-line spacing">
+                        <span class="prompt">$</span>
+                        <span class="command">ls social_links/</span>
+                    </div>
+
+                    <div class="social-grid">
+                        <a href="#" class="social-item">
+                            <span class="social-icon">[L]</span>
+                            <span class="social-name">LINKEDIN</span>
                         </a>
-                        <a href="#" class="social-link" aria-label="GitHub">
-                            <span>GitHub</span>
+                        <a href="#" class="social-item">
+                            <span class="social-icon">[G]</span>
+                            <span class="social-name">GITHUB</span>
                         </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
-                            <span>Instagram</span>
+                        <a href="#" class="social-item">
+                            <span class="social-icon">[I]</span>
+                            <span class="social-name">INSTAGRAM</span>
                         </a>
+                    </div>
+
+                    <div class="terminal-line spacing">
+                        <span class="prompt">$</span>
+                        <span class="blinking-cursor">█</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <!-- ASCII Art Footer -->
+        <div class="contact-ascii">
+            <pre>
+   ╔══════════════════════════════════╗
+   ║   LET'S BUILD SOMETHING GREAT   ║
+   ╚══════════════════════════════════╝
+            </pre>
         </div>
-    </footer>
 
+        <!-- Footer -->
+        <footer class="footer-minimal">
+            <span class="footer-text">END_OF_FILE</span>
+            <span class="footer-separator">|</span>
+            <span class="footer-text">NOAH_LAHAISE.SYS</span>
+        </footer>
+    </main>
+
+    <script src="js/glitch.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

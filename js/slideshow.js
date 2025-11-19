@@ -1,28 +1,52 @@
 // ======================
-// Slideshow Functionality
+// Gallery/Slideshow Functionality
 // ======================
 
-// Track current slide index for each slideshow
-const slideshowStates = {};
+// Track current slide index for each gallery
+const galleryStates = {};
 
-// Initialize slideshow states
-function initSlideshows() {
-    const slideshows = document.querySelectorAll('.slideshow-container');
+// Initialize gallery states
+function initGalleries() {
+    const galleries = document.querySelectorAll('.gallery-container');
 
-    slideshows.forEach(slideshow => {
-        const id = slideshow.id;
-        slideshowStates[id] = { currentIndex: 0 };
+    galleries.forEach(gallery => {
+        const id = gallery.id;
+        galleryStates[id] = { currentIndex: 0 };
     });
 }
 
-// Change slide (direction: 1 for next, -1 for previous)
-function changeSlide(slideshowId, direction) {
-    const container = document.getElementById(slideshowId);
+// Update counter display
+function updateCounter(galleryId) {
+    const gallery = document.getElementById(galleryId);
+    if (!gallery) return;
+
+    const state = galleryStates[galleryId];
+    const slides = gallery.querySelectorAll('.gallery-slide');
+    const currentNum = state.currentIndex + 1;
+    const total = slides.length;
+
+    // Update counter based on gallery ID
+    if (galleryId === 'liveShowsGallery') {
+        const counter = document.getElementById('liveShowsCurrent');
+        if (counter) {
+            counter.textContent = String(currentNum).padStart(2, '0');
+        }
+    } else if (galleryId === 'artPortfolioGallery') {
+        const counter = document.getElementById('artPortfolioCurrent');
+        if (counter) {
+            counter.textContent = String(currentNum).padStart(2, '0');
+        }
+    }
+}
+
+// Change gallery slide (direction: 1 for next, -1 for previous)
+function changeGallery(galleryId, direction) {
+    const container = document.getElementById(galleryId);
     if (!container) return;
 
-    const slides = container.querySelectorAll('.slide');
+    const slides = container.querySelectorAll('.gallery-slide');
     const indicators = container.querySelectorAll('.indicator');
-    const state = slideshowStates[slideshowId];
+    const state = galleryStates[galleryId];
 
     // Hide current slide
     slides[state.currentIndex].classList.remove('active');
@@ -41,16 +65,19 @@ function changeSlide(slideshowId, direction) {
     // Show new slide
     slides[state.currentIndex].classList.add('active');
     indicators[state.currentIndex].classList.add('active');
+
+    // Update counter
+    updateCounter(galleryId);
 }
 
-// Go to specific slide
-function goToSlide(slideshowId, index) {
-    const container = document.getElementById(slideshowId);
+// Go to specific gallery slide
+function setGallery(galleryId, index) {
+    const container = document.getElementById(galleryId);
     if (!container) return;
 
-    const slides = container.querySelectorAll('.slide');
+    const slides = container.querySelectorAll('.gallery-slide');
     const indicators = container.querySelectorAll('.indicator');
-    const state = slideshowStates[slideshowId];
+    const state = galleryStates[galleryId];
 
     // Validate index
     if (index < 0 || index >= slides.length) return;
@@ -65,79 +92,77 @@ function goToSlide(slideshowId, index) {
     // Show new slide
     slides[state.currentIndex].classList.add('active');
     indicators[state.currentIndex].classList.add('active');
+
+    // Update counter
+    updateCounter(galleryId);
 }
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
-    // Get the first slideshow container (for simplicity, you can make this more sophisticated)
-    const slideshows = document.querySelectorAll('.slideshow-container');
+    // Get gallery containers
+    const galleries = document.querySelectorAll('.gallery-container');
 
-    if (slideshows.length === 0) return;
+    if (galleries.length === 0) return;
 
-    // Use the first visible slideshow
-    let activeSlideshow = null;
-    slideshows.forEach(slideshow => {
-        const rect = slideshow.getBoundingClientRect();
+    // Use the first visible gallery
+    let activeGallery = null;
+    galleries.forEach(gallery => {
+        const rect = gallery.getBoundingClientRect();
         const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
-        if (isVisible && !activeSlideshow) {
-            activeSlideshow = slideshow.id;
+        if (isVisible && !activeGallery) {
+            activeGallery = gallery.id;
         }
     });
 
-    if (!activeSlideshow) {
-        activeSlideshow = slideshows[0].id;
+    if (!activeGallery && galleries.length > 0) {
+        activeGallery = galleries[0].id;
     }
 
     // Arrow key navigation
     if (e.key === 'ArrowLeft') {
-        changeSlide(activeSlideshow, -1);
+        changeGallery(activeGallery, -1);
     } else if (e.key === 'ArrowRight') {
-        changeSlide(activeSlideshow, 1);
+        changeGallery(activeGallery, 1);
     }
 });
 
-// Auto-advance slideshows (optional - uncomment to enable)
-/*
-function autoAdvanceSlideshows() {
-    Object.keys(slideshowStates).forEach(slideshowId => {
-        changeSlide(slideshowId, 1);
-    });
-}
-
-// Auto-advance every 5 seconds
-setInterval(autoAdvanceSlideshows, 5000);
-*/
-
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-    initSlideshows();
+    initGalleries();
+
+    // Initialize counters
+    Object.keys(galleryStates).forEach(galleryId => {
+        updateCounter(galleryId);
+    });
 });
 
 // Touch/swipe support for mobile
 let touchStartX = 0;
 let touchEndX = 0;
 
-document.querySelectorAll('.slideshow-container').forEach(container => {
-    container.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.gallery-container').forEach(container => {
+        container.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
 
-    container.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe(container.id);
-    }, { passive: true });
+        container.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe(container.id);
+        }, { passive: true });
+    });
 });
 
-function handleSwipe(slideshowId) {
+function handleSwipe(galleryId) {
     const swipeThreshold = 50; // Minimum distance for a swipe
 
     if (touchEndX < touchStartX - swipeThreshold) {
         // Swipe left - next slide
-        changeSlide(slideshowId, 1);
+        changeGallery(galleryId, 1);
     }
 
     if (touchEndX > touchStartX + swipeThreshold) {
         // Swipe right - previous slide
-        changeSlide(slideshowId, -1);
+        changeGallery(galleryId, -1);
     }
 }

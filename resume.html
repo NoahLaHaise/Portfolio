@@ -3,159 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional Resume">
-    <title>Resume - Portfolio</title>
+    <meta name="description" content="Professional Resume - Noah LaHaise">
+    <title>RESUME.SYS // NOAH_LAHAISE</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <!-- Background Image -->
-    <div class="video-background">
-        <div class="background-image other-page"></div>
-    </div>
+<body class="resume-page">
+    <!-- Scanline Overlay -->
+    <div class="scanlines"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><h1>Portfolio</h1></a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="resume.html" class="nav-link active">Resume</a></li>
-                <li><a href="creative.html" class="nav-link">Creative & Tech</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+    <!-- Grid Background -->
+    <div class="grid-bg"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="top-nav">
+        <a href="index.html" class="nav-link">[HOME]</a>
+        <span class="nav-sep">//</span>
+        <a href="resume.html" class="nav-link active">[RESUME]</a>
+        <span class="nav-sep">//</span>
+        <a href="creative.html" class="nav-link">[CREATIVE]</a>
+        <span class="nav-sep">//</span>
+        <a href="contact.html" class="nav-link">[CONTACT]</a>
     </nav>
 
-    <!-- Resume Section -->
-    <section class="section resume-section page-content">
-        <div class="container">
-            <h2 class="section-title">Professional Resume</h2>
-            <div class="resume-content">
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="header-tag">&lt;PROFESSIONAL_RESUME&gt;</div>
+            <h1 class="page-title glitch-text" data-text="WORK_EXPERIENCE">WORK_EXPERIENCE</h1>
+        </header>
 
-                <!-- Experience -->
-                <div class="resume-block">
-                    <h3>Work Experience</h3>
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <h4>Software Developer II</h4>
-                            <span class="date">2022 - Present</span>
-                        </div>
-                        <p class="company">RF-SMART</p>
-                        <ul class="responsibilities">
-                            <li>Lead software developer on the RF-SMART for D365 product</li>
-                            <li>Works on internal AI tooling that makes our support representatives more efficient and helps the sales team with key insights.</li>
-                            <li>Notable project or impact</li>
-                        </ul>
-                    </div>
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <h4>Previous Job Title</h4>
-                            <span class="date">2018 - 2020</span>
-                        </div>
-                        <p class="company">Previous Company</p>
-                        <ul class="responsibilities">
-                            <li>Key responsibility or achievement</li>
-                            <li>Another important contribution</li>
-                            <li>Notable project or impact</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Education -->
-                <div class="resume-block">
-                    <h3>Education</h3>
-                    <div class="education-item">
-                        <div class="education-header">
-                            <h4>Bachelors in Finance & Minor in Computer Science</h4>
-                        </div>
-                        <p class="institution">University of North Florida</p>
-                        <p class="description">Graduated Spring 2023</p>
-                    </div>
-                </div>
-
-                <!-- Skills -->
-                <div class="resume-block">
-                    <h3>Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <h4>Technical</h4>
-                            <ul>
-                                <li>Python</li>
-                                <li>C#</li>
-                                <li>X++</li>
-                                <li>SQL</li>
-                                <li>Python</li>
-                                <li>HTML/CSS</li>
-                            </ul>
-                        </div>
-                        <div class="skill-category">
-                            <h4>Tools & Frameworks</h4>
-                            <ul>
-                                <li>Git & GitHub</li>
-                                <li>VS & VS Code</li>
-                                <li>SQL Server</li>
-                                <li>PostgreSQL</li>
-                                <li>Docker</li>
-                                <li>AWS</li>
-                            </ul>
-                        </div>
-                        <div class="skill-category">
-                            <h4>Soft Skills</h4>
-                            <ul>
-                                <li>Problem Solving</li>
-                                <li>Team Collaboration</li>
-                                <li>Communication</li>
-                                <li>Project Management</li>
-                                <li>Agile/Scrum</li>
-                                <li>Leadership</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Projects -->
-                <div class="resume-block">
-                    <h3>Technical Projects</h3>
-                    <div class="project-item">
-                        <div class="project-header">
-                            <h4>Project Name</h4>
-                            <span class="date">Year</span>
-                        </div>
-                        <p class="project-description">Brief description of the project, its purpose, and the problem it solves.</p>
-                        <div class="project-tech">
-                            <strong>Technologies:</strong> <span>Python, React, PostgreSQL, Docker</span>
-                        </div>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-header">
-                            <h4>Another Project</h4>
-                            <span class="date">Year</span>
-                        </div>
-                        <p class="project-description">Description of another technical project and its impact.</p>
-                        <div class="project-tech">
-                            <strong>Technologies:</strong> <span>JavaScript, Node.js, MongoDB, AWS</span>
-                        </div>
-                    </div>
-                </div>
-
+        <!-- Work Experience -->
+        <section class="data-section">
+            <div class="section-label">
+                <span class="label-text">EMPLOYMENT_HISTORY</span>
+                <span class="label-line"></span>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
-        </div>
-    </footer>
+            <div class="data-block">
+                <div class="data-header">
+                    <h3 class="data-title">SOFTWARE DEVELOPER II</h3>
+                    <span class="data-date">[2022_PRESENT]</span>
+                </div>
+                <div class="data-company">@ RF-SMART</div>
+                <ul class="data-list">
+                    <li><span class="list-marker">&gt;</span> Lead software developer on the RF-SMART for D365 product</li>
+                    <li><span class="list-marker">&gt;</span> Works on internal AI tooling that makes our support representatives more efficient and helps the sales team with key insights.</li>
+                    <li><span class="list-marker">&gt;</span> Notable project or impact</li>
+                </ul>
+                <div class="data-border"></div>
+            </div>
 
+            <div class="data-block">
+                <div class="data-header">
+                    <h3 class="data-title">PREVIOUS JOB TITLE</h3>
+                    <span class="data-date">[2018_2020]</span>
+                </div>
+                <div class="data-company">@ Previous Company</div>
+                <ul class="data-list">
+                    <li><span class="list-marker">&gt;</span> Key responsibility or achievement</li>
+                    <li><span class="list-marker">&gt;</span> Another important contribution</li>
+                    <li><span class="list-marker">&gt;</span> Notable project or impact</li>
+                </ul>
+                <div class="data-border"></div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="data-section">
+            <div class="section-label">
+                <span class="label-text">EDUCATION_DATA</span>
+                <span class="label-line"></span>
+            </div>
+
+            <div class="data-block">
+                <div class="data-header">
+                    <h3 class="data-title">BACHELORS IN FINANCE & MINOR IN CS</h3>
+                </div>
+                <div class="data-company">@ University of North Florida</div>
+                <div class="data-meta">Graduated Spring 2023</div>
+                <div class="data-border"></div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="data-section">
+            <div class="section-label">
+                <span class="label-text">TECHNICAL_SKILLS</span>
+                <span class="label-line"></span>
+            </div>
+
+            <div class="skills-matrix">
+                <div class="skill-col">
+                    <div class="skill-header">LANGUAGES</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">X++</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+
+                <div class="skill-col">
+                    <div class="skill-header">TOOLS_&_FRAMEWORKS</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git & GitHub</span>
+                        <span class="skill-tag">VS & VS Code</span>
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                    </div>
+                </div>
+
+                <div class="skill-col">
+                    <div class="skill-header">SOFT_SKILLS</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Team Collaboration</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">Agile/Scrum</span>
+                        <span class="skill-tag">Leadership</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="data-section">
+            <div class="section-label">
+                <span class="label-text">PROJECT_FILES</span>
+                <span class="label-line"></span>
+            </div>
+
+            <div class="data-block">
+                <div class="data-header">
+                    <h3 class="data-title">PROJECT NAME</h3>
+                    <span class="data-date">[YEAR]</span>
+                </div>
+                <p class="data-description">Brief description of the project, its purpose, and the problem it solves.</p>
+                <div class="tech-stack">
+                    <span class="tech-label">STACK:</span>
+                    <span class="tech-items">Python // React // PostgreSQL // Docker</span>
+                </div>
+                <div class="data-border"></div>
+            </div>
+
+            <div class="data-block">
+                <div class="data-header">
+                    <h3 class="data-title">ANOTHER PROJECT</h3>
+                    <span class="data-date">[YEAR]</span>
+                </div>
+                <p class="data-description">Description of another technical project and its impact.</p>
+                <div class="tech-stack">
+                    <span class="tech-label">STACK:</span>
+                    <span class="tech-items">JavaScript // Node.js // MongoDB // AWS</span>
+                </div>
+                <div class="data-border"></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-minimal">
+            <span class="footer-text">END_OF_FILE</span>
+            <span class="footer-separator">|</span>
+            <span class="footer-text">NOAH_LAHAISE.SYS</span>
+        </footer>
+    </main>
+
+    <script src="js/glitch.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

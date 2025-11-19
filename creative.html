@@ -3,165 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative Technology & Art Projects">
-    <title>Creative & Tech - Portfolio</title>
+    <meta name="description" content="Creative Technology & Art - Noah LaHaise">
+    <title>CREATIVE.SYS // NOAH_LAHAISE</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <!-- Background Image -->
-    <div class="video-background">
-        <div class="background-image other-page"></div>
-    </div>
+<body class="creative-page">
+    <!-- Scanline Overlay -->
+    <div class="scanlines"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><h1>Portfolio</h1></a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="resume.html" class="nav-link">Resume</a></li>
-                <li><a href="creative.html" class="nav-link active">Creative & Tech</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+    <!-- Grid Background -->
+    <div class="grid-bg"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="top-nav">
+        <a href="index.html" class="nav-link">[HOME]</a>
+        <span class="nav-sep">//</span>
+        <a href="resume.html" class="nav-link">[RESUME]</a>
+        <span class="nav-sep">//</span>
+        <a href="creative.html" class="nav-link active">[CREATIVE]</a>
+        <span class="nav-sep">//</span>
+        <a href="contact.html" class="nav-link">[CONTACT]</a>
     </nav>
 
-    <!-- Creative Technology / Art Section -->
-    <section class="section creative-section page-content">
-        <div class="container">
-            <h2 class="section-title">Creative Technology & Art</h2>
-            <p class="section-description">Explore my live shows and art portfolio</p>
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="header-tag">&lt;CREATIVE_TECHNOLOGY&gt;</div>
+            <h1 class="page-title glitch-text" data-text="VISUAL_WORKS">VISUAL_WORKS</h1>
+        </header>
 
-            <!-- Live Shows Section -->
-            <div class="slideshow-section">
-                <div class="slideshow-container" id="liveShowsSlideshow">
-                    <!-- Slide 1 -->
-                    <div class="slide active">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/00d9ff" alt="">
-                        <div class="slide-caption">
-                            <h4>Festival Performance 2024</h4>
-                            <p>Headlining set at the Electronic Arts Festival featuring custom visuals and live coding.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/8338ec" alt="">
-                        <div class="slide-caption">
-                            <h4>Gallery Opening 2023</h4>
-                            <p>Interactive installation launch at the Contemporary Art Museum.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/ff006e" alt="">
-                        <div class="slide-caption">
-                            <h4>Tech Conference Showcase</h4>
-                            <p>Keynote presentation and live demonstration of generative art systems.</p>
-                        </div>
-                    </div>
-
-                    <!-- Navigation Arrows -->
-                    <button class="slide-arrow prev" onclick="changeSlide('liveShowsSlideshow', -1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-                    <button class="slide-arrow next" onclick="changeSlide('liveShowsSlideshow', 1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-
-                    <!-- Slide Indicators -->
-                    <div class="slide-indicators">
-                        <span class="indicator active" onclick="goToSlide('liveShowsSlideshow', 0)"></span>
-                        <span class="indicator" onclick="goToSlide('liveShowsSlideshow', 1)"></span>
-                        <span class="indicator" onclick="goToSlide('liveShowsSlideshow', 2)"></span>
-                    </div>
-                </div>
+        <!-- Live Shows Section -->
+        <section class="gallery-section">
+            <div class="section-label">
+                <span class="label-text">LIVE_SHOWS</span>
+                <span class="label-counter">[<span id="liveShowsCurrent">01</span>/03]</span>
+                <span class="label-line"></span>
             </div>
 
-            <!-- Art Portfolio Section -->
-            <div class="slideshow-section">
-                <div class="slideshow-container" id="artPortfolioSlideshow">
-                    <!-- Slide 1 -->
-                    <div class="slide active">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/1abc9c" alt="">
-                        <div class="slide-caption">
-                            <h4>Digital Landscapes Series</h4>
-                            <p>Procedurally generated environments exploring the relationship between nature and technology.</p>
+            <div class="gallery-container" id="liveShowsGallery">
+                <div class="gallery-slide active">
+                    <img src="https://via.placeholder.com/1200x600/0a0a0f/FF006E" alt="">
+                    <div class="slide-overlay">
+                        <div class="overlay-content">
+                            <h3 class="overlay-title">FESTIVAL_PERFORMANCE_2024</h3>
+                            <p class="overlay-desc">Headlining set at the Electronic Arts Festival featuring custom visuals and live coding.</p>
                         </div>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/e74c3c" alt="">
-                        <div class="slide-caption">
-                            <h4>Abstract Motion Studies</h4>
-                            <p>Collection of animated pieces investigating rhythm, flow, and digital materiality.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/f39c12" alt="">
-                        <div class="slide-caption">
-                            <h4>Generative Compositions</h4>
-                            <p>Algorithmic artworks created using custom code and machine learning techniques.</p>
-                        </div>
-                    </div>
-
-                    <!-- Slide 4 -->
-                    <div class="slide">
-                        <img src="https://via.placeholder.com/1200x600/1a1a2e/9b59b6" alt="">
-                        <div class="slide-caption">
-                            <h4>Interactive Installations</h4>
-                            <p>Immersive experiences that respond to viewer presence and interaction.</p>
-                        </div>
-                    </div>
-
-                    <!-- Navigation Arrows -->
-                    <button class="slide-arrow prev" onclick="changeSlide('artPortfolioSlideshow', -1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-                    <button class="slide-arrow next" onclick="changeSlide('artPortfolioSlideshow', 1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-
-                    <!-- Slide Indicators -->
-                    <div class="slide-indicators">
-                        <span class="indicator active" onclick="goToSlide('artPortfolioSlideshow', 0)"></span>
-                        <span class="indicator" onclick="goToSlide('artPortfolioSlideshow', 1)"></span>
-                        <span class="indicator" onclick="goToSlide('artPortfolioSlideshow', 2)"></span>
-                        <span class="indicator" onclick="goToSlide('artPortfolioSlideshow', 3)"></span>
+                        <div class="overlay-glitch"></div>
                     </div>
                 </div>
+
+                <div class="gallery-slide">
+                    <img src="https://via.placeholder.com/1200x600/0a0a0f/00F5FF" alt="">
+                    <div class="slide-overlay">
+                        <div class="overlay-content">
+                            <h3 class="overlay-title">GALLERY_OPENING_2023</h3>
+                            <p class="overlay-desc">Interactive installation launch at the Contemporary Art Museum.</p>
+                        </div>
+                        <div class="overlay-glitch"></div>
+                    </div>
+                </div>
+
+                <div class="gallery-slide">
+                    <img src="https://via.placeholder.com/1200x600/0a0a0f/CCFF00" alt="">
+                    <div class="slide-overlay">
+                        <div class="overlay-content">
+                            <h3 class="overlay-title">TECH_CONFERENCE_SHOWCASE</h3>
+                            <p class="overlay-desc">Keynote presentation and live demonstration of generative art systems.</p>
+                        </div>
+                        <div class="overlay-glitch"></div>
+                    </div>
+                </div>
+
+                <!-- Gallery Controls -->
+                <button class="gallery-arrow arrow-prev" onclick="changeGallery('liveShowsGallery', -1)">
+                    <span>&lt;</span>
+                </button>
+                <button class="gallery-arrow arrow-next" onclick="changeGallery('liveShowsGallery', 1)">
+                    <span>&gt;</span>
+                </button>
+
+                <!-- Gallery Indicators -->
+                <div class="gallery-indicators">
+                    <span class="indicator active" onclick="setGallery('liveShowsGallery', 0)"></span>
+                    <span class="indicator" onclick="setGallery('liveShowsGallery', 1)"></span>
+                    <span class="indicator" onclick="setGallery('liveShowsGallery', 2)"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Art Portfolio Section -->
+        <section class="gallery-section">
+            <div class="section-label">
+                <span class="label-text">ART_PORTFOLIO</span>
+                <span class="label-counter">[<span id="artPortfolioCurrent">01</span>/04]</span>
+                <span class="label-line"></span>
             </div>
 
-        </div>
-    </section>
+            <div class="gallery-container" id="artPortfolioGallery">
+                <div class="gallery-slide active">
+                    <img src="https://via.placeholder.com/1200x600/0a0a0f/FF006E" alt="">
+                    <div class="slide-overlay">
+                        <div class="overlay-content">
+                            <h3 class="overlay-title">DIGITAL_LANDSCAPES_SERIES</h3>
+                            <p class="overlay-desc">Procedurally generated environments exploring the relationship between nature and technology.</p>
+                        </div>
+                        <div class="overlay-glitch"></div>
+                    </div>
+                </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
-        </div>
-    </footer>
+                <div class="gallery-slide">
+                    <img src="https://via.placeholder.com/1200x600/0a0a0f/00F5FF" alt="">
+                    <div class="slide-overlay">
+                        <div class="overlay-content">
+                            <h3 class="overlay-title">ABSTRACT_MOTION_STUDIES</h3>
+                            <p class="overlay-desc">Collection of animated pieces investigating rhythm, flow, and digital materiality.</p>
+                        </div>
+                        <div class="overlay-glitch"></div>
+                    </div>
+                </div>
 
-    <script src="js/main.js"></script>
+                <div class="gallery-slide">
+                    <img src="https://via.placeholder.com/1200x600/0a0a0f/CCFF00" alt="">
+                    <div class="slide-overlay">
+                        <div class="overlay-content">
+                            <h3 class="overlay-title">GENERATIVE_COMPOSITIONS</h3>
+                            <p class="overlay-desc">Algorithmic artworks created using custom code and machine learning techniques.</p>
+                        </div>
+                        <div class="overlay-glitch"></div>
+                    </div>
+                </div>
+
+                <div class="gallery-slide">
+                    <img src="https://via.placeholder.com/1200x600/0a0a0f/9D4EDD" alt="">
+                    <div class="slide-overlay">
+                        <div class="overlay-content">
+                            <h3 class="overlay-title">INTERACTIVE_INSTALLATIONS</h3>
+                            <p class="overlay-desc">Immersive experiences that respond to viewer presence and interaction.</p>
+                        </div>
+                        <div class="overlay-glitch"></div>
+                    </div>
+                </div>
+
+                <!-- Gallery Controls -->
+                <button class="gallery-arrow arrow-prev" onclick="changeGallery('artPortfolioGallery', -1)">
+                    <span>&lt;</span>
+                </button>
+                <button class="gallery-arrow arrow-next" onclick="changeGallery('artPortfolioGallery', 1)">
+                    <span>&gt;</span>
+                </button>
+
+                <!-- Gallery Indicators -->
+                <div class="gallery-indicators">
+                    <span class="indicator active" onclick="setGallery('artPortfolioGallery', 0)"></span>
+                    <span class="indicator" onclick="setGallery('artPortfolioGallery', 1)"></span>
+                    <span class="indicator" onclick="setGallery('artPortfolioGallery', 2)"></span>
+                    <span class="indicator" onclick="setGallery('artPortfolioGallery', 3)"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-minimal">
+            <span class="footer-text">END_OF_FILE</span>
+            <span class="footer-separator">|</span>
+            <span class="footer-text">NOAH_LAHAISE.SYS</span>
+        </footer>
+    </main>
+
+    <script src="js/glitch.js"></script>
     <script src="js/slideshow.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
