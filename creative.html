@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative Technology & Art - Noah LaHaise">
-    <title>CREATIVE.SYS // NOAH_LAHAISE</title>
+    <meta name="description" content="Projects & Portfolio - Noah LaHaise">
+    <title>PROJECTS.SYS // NOAH_LAHAISE</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
         <span class="nav-sep">//</span>
         <a href="resume.html" class="nav-link">[RESUME]</a>
         <span class="nav-sep">//</span>
-        <a href="creative.html" class="nav-link active">[CREATIVE]</a>
+        <a href="creative.html" class="nav-link active">[PROJECTS]</a>
         <span class="nav-sep">//</span>
         <a href="contact.html" class="nav-link">[CONTACT]</a>
     </nav>
@@ -32,137 +32,74 @@
     <main class="main-container">
         <!-- Page Header -->
         <header class="page-header">
-            <div class="header-tag">&lt;CREATIVE_TECHNOLOGY&gt;</div>
-            <h1 class="page-title glitch-text" data-text="VISUAL_WORKS">VISUAL_WORKS</h1>
+            <div class="header-tag">&lt;PROJECTS_AND_PORTFOLIO&gt;</div>
+            <h1 class="page-title glitch-text" data-text="TECHNICAL_PROJECTS">TECHNICAL_PROJECTS</h1>
         </header>
 
-        <!-- Live Shows Section -->
-        <section class="gallery-section">
+        <!-- Projects Section -->
+        <section class="data-section">
             <div class="section-label">
-                <span class="label-text">LIVE_SHOWS</span>
-                <span class="label-counter">[<span id="liveShowsCurrent">01</span>/03]</span>
+                <span class="label-text">PROJECT_FILES</span>
                 <span class="label-line"></span>
             </div>
 
-            <div class="gallery-container" id="liveShowsGallery">
-                <div class="gallery-slide active">
-                    <img src="https://via.placeholder.com/1200x600/0a0a0f/FF006E" alt="">
-                    <div class="slide-overlay">
-                        <div class="overlay-content">
-                            <h3 class="overlay-title">FESTIVAL_PERFORMANCE_2024</h3>
-                            <p class="overlay-desc">Headlining set at the Electronic Arts Festival featuring custom visuals and live coding.</p>
-                        </div>
-                        <div class="overlay-glitch"></div>
-                    </div>
+            <div class="data-block">
+                <!-- Optional image — remove this div if no image desired -->
+                <div class="project-image">
+                    <img src="https://via.placeholder.com/1200x400/0a0a0f/00F5FF" alt="Project screenshot">
                 </div>
-
-                <div class="gallery-slide">
-                    <img src="https://via.placeholder.com/1200x600/0a0a0f/00F5FF" alt="">
-                    <div class="slide-overlay">
-                        <div class="overlay-content">
-                            <h3 class="overlay-title">GALLERY_OPENING_2023</h3>
-                            <p class="overlay-desc">Interactive installation launch at the Contemporary Art Museum.</p>
-                        </div>
-                        <div class="overlay-glitch"></div>
-                    </div>
+                <div class="data-header">
+                    <h3 class="data-title">PROJECT NAME ONE</h3>
+                    <span class="data-date">[2025]</span>
                 </div>
-
-                <div class="gallery-slide">
-                    <img src="https://via.placeholder.com/1200x600/0a0a0f/CCFF00" alt="">
-                    <div class="slide-overlay">
-                        <div class="overlay-content">
-                            <h3 class="overlay-title">TECH_CONFERENCE_SHOWCASE</h3>
-                            <p class="overlay-desc">Keynote presentation and live demonstration of generative art systems.</p>
-                        </div>
-                        <div class="overlay-glitch"></div>
-                    </div>
+                <p class="data-description">Description of your first project. Explain what it does, the problem it solves, and its impact.</p>
+                <div class="tech-stack">
+                    <span class="tech-label">STACK:</span>
+                    <span class="tech-items">Python // React // PostgreSQL</span>
                 </div>
-
-                <!-- Gallery Controls -->
-                <button class="gallery-arrow arrow-prev" onclick="changeGallery('liveShowsGallery', -1)">
-                    <span>&lt;</span>
-                </button>
-                <button class="gallery-arrow arrow-next" onclick="changeGallery('liveShowsGallery', 1)">
-                    <span>&gt;</span>
-                </button>
-
-                <!-- Gallery Indicators -->
-                <div class="gallery-indicators">
-                    <span class="indicator active" onclick="setGallery('liveShowsGallery', 0)"></span>
-                    <span class="indicator" onclick="setGallery('liveShowsGallery', 1)"></span>
-                    <span class="indicator" onclick="setGallery('liveShowsGallery', 2)"></span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Art Portfolio Section -->
-        <section class="gallery-section">
-            <div class="section-label">
-                <span class="label-text">ART_PORTFOLIO</span>
-                <span class="label-counter">[<span id="artPortfolioCurrent">01</span>/04]</span>
-                <span class="label-line"></span>
+                <ul class="data-list">
+                    <li><span class="list-marker">&gt;</span> Key accomplishment or feature</li>
+                    <li><span class="list-marker">&gt;</span> Another notable detail</li>
+                </ul>
+                <div class="data-border"></div>
             </div>
 
-            <div class="gallery-container" id="artPortfolioGallery">
-                <div class="gallery-slide active">
-                    <img src="https://via.placeholder.com/1200x600/0a0a0f/FF006E" alt="">
-                    <div class="slide-overlay">
-                        <div class="overlay-content">
-                            <h3 class="overlay-title">DIGITAL_LANDSCAPES_SERIES</h3>
-                            <p class="overlay-desc">Procedurally generated environments exploring the relationship between nature and technology.</p>
-                        </div>
-                        <div class="overlay-glitch"></div>
-                    </div>
+            <div class="data-block">
+                <div class="data-header">
+                    <h3 class="data-title">PROJECT NAME TWO</h3>
+                    <span class="data-date">[2024]</span>
                 </div>
-
-                <div class="gallery-slide">
-                    <img src="https://via.placeholder.com/1200x600/0a0a0f/00F5FF" alt="">
-                    <div class="slide-overlay">
-                        <div class="overlay-content">
-                            <h3 class="overlay-title">ABSTRACT_MOTION_STUDIES</h3>
-                            <p class="overlay-desc">Collection of animated pieces investigating rhythm, flow, and digital materiality.</p>
-                        </div>
-                        <div class="overlay-glitch"></div>
-                    </div>
+                <p class="data-description">Description of your second project. This one has no image to demonstrate that images are optional.</p>
+                <div class="tech-stack">
+                    <span class="tech-label">STACK:</span>
+                    <span class="tech-items">JavaScript // Node.js // MongoDB</span>
                 </div>
+                <ul class="data-list">
+                    <li><span class="list-marker">&gt;</span> Key accomplishment or feature</li>
+                    <li><span class="list-marker">&gt;</span> Another notable detail</li>
+                </ul>
+                <div class="data-border"></div>
+            </div>
 
-                <div class="gallery-slide">
-                    <img src="https://via.placeholder.com/1200x600/0a0a0f/CCFF00" alt="">
-                    <div class="slide-overlay">
-                        <div class="overlay-content">
-                            <h3 class="overlay-title">GENERATIVE_COMPOSITIONS</h3>
-                            <p class="overlay-desc">Algorithmic artworks created using custom code and machine learning techniques.</p>
-                        </div>
-                        <div class="overlay-glitch"></div>
-                    </div>
+            <div class="data-block">
+                <!-- Optional image — remove this div if no image desired -->
+                <div class="project-image">
+                    <img src="https://via.placeholder.com/1200x400/0a0a0f/CCFF00" alt="Project screenshot">
                 </div>
-
-                <div class="gallery-slide">
-                    <img src="https://via.placeholder.com/1200x600/0a0a0f/9D4EDD" alt="">
-                    <div class="slide-overlay">
-                        <div class="overlay-content">
-                            <h3 class="overlay-title">INTERACTIVE_INSTALLATIONS</h3>
-                            <p class="overlay-desc">Immersive experiences that respond to viewer presence and interaction.</p>
-                        </div>
-                        <div class="overlay-glitch"></div>
-                    </div>
+                <div class="data-header">
+                    <h3 class="data-title">PROJECT NAME THREE</h3>
+                    <span class="data-date">[2024]</span>
                 </div>
-
-                <!-- Gallery Controls -->
-                <button class="gallery-arrow arrow-prev" onclick="changeGallery('artPortfolioGallery', -1)">
-                    <span>&lt;</span>
-                </button>
-                <button class="gallery-arrow arrow-next" onclick="changeGallery('artPortfolioGallery', 1)">
-                    <span>&gt;</span>
-                </button>
-
-                <!-- Gallery Indicators -->
-                <div class="gallery-indicators">
-                    <span class="indicator active" onclick="setGallery('artPortfolioGallery', 0)"></span>
-                    <span class="indicator" onclick="setGallery('artPortfolioGallery', 1)"></span>
-                    <span class="indicator" onclick="setGallery('artPortfolioGallery', 2)"></span>
-                    <span class="indicator" onclick="setGallery('artPortfolioGallery', 3)"></span>
+                <p class="data-description">Description of your third project. Fill in with real project details.</p>
+                <div class="tech-stack">
+                    <span class="tech-label">STACK:</span>
+                    <span class="tech-items">C# // .NET // Azure</span>
                 </div>
+                <ul class="data-list">
+                    <li><span class="list-marker">&gt;</span> Key accomplishment or feature</li>
+                    <li><span class="list-marker">&gt;</span> Another notable detail</li>
+                </ul>
+                <div class="data-border"></div>
             </div>
         </section>
 
@@ -175,7 +112,6 @@
     </main>
 
     <script src="js/glitch.js"></script>
-    <script src="js/slideshow.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

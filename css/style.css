@@ -700,6 +700,22 @@ body {
 
 /* === CREATIVE PAGE === */
 
+/* Project Image (optional per card) */
+.project-image {
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--border-gray);
+}
+
+.project-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
 .gallery-section {
     margin-bottom: 5rem;
     animation: fadeInUp 0.8s ease-out backwards;
