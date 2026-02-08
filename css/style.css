@@ -53,7 +53,7 @@ body {
     background: linear-gradient(
         to bottom,
         transparent 50%,
-        rgba(0, 0, 0, 0.3) 51%
+        rgba(0, 0, 0, 0.15) 51%
     );
     background-size: 100% 4px;
     animation: scanlineMove 0.5s linear infinite;
