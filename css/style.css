@@ -507,10 +507,12 @@ body {
 }
 
 .page-title {
-    font-size: clamp(3rem, 8vw, 6rem);
+    font-size: clamp(1.4rem, 8vw, 6rem);
     line-height: 1;
     color: var(--text-white);
     margin-bottom: 1rem;
+    overflow: hidden;
+    max-width: 100%;
 }
 
 /* Data Sections */
@@ -1038,10 +1040,6 @@ body {
         gap: 0.5rem;
     }
 
-    .page-title {
-        font-size: 3rem;
-    }
-
     .block-title {
         font-size: 1.5rem;
     }
@@ -1080,9 +1078,6 @@ body {
         padding: 1.5rem;
     }
 
-    .page-title {
-        font-size: 2rem;
-    }
 }
 
 /* === UTILITY CLASSES === */
