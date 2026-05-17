@@ -56,7 +56,7 @@ body {
         rgba(0, 0, 0, 0.15) 51%
     );
     background-size: 100% 4px;
-    animation: scanlineMove 0.5s linear infinite;
+    animation: scanlineMove 1s linear infinite;
 }
 
 @keyframes scanlineMove {
@@ -95,7 +95,7 @@ body {
     position: relative;
     font-weight: 700;
     letter-spacing: -0.02em;
-    animation: glitch-skew 3s infinite;
+    animation: glitch-skew 8s infinite;
 }
 
 .glitch-text::before,
@@ -112,14 +112,14 @@ body {
     left: 2px;
     text-shadow: -2px 0 var(--neon-cyan);
     clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim 5s infinite linear alternate-reverse;
+    animation: glitch-anim 10s infinite linear alternate-reverse;
 }
 
 .glitch-text::after {
     left: -2px;
     text-shadow: -2px 0 var(--neon-pink);
     clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim2 5s infinite linear alternate-reverse;
+    animation: glitch-anim2 10s infinite linear alternate-reverse;
 }
 
 @keyframes glitch-anim {
