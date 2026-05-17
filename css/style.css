@@ -1073,10 +1073,15 @@ body {
 
     .ascii-art, .contact-ascii pre {
         font-size: 0.6rem;
+        overflow-x: hidden;
     }
 
     .nav-block {
         padding: 1.5rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
     }
 }
 
