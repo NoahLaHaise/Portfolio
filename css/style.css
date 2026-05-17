@@ -644,6 +644,10 @@ body {
     color: var(--neon-cyan);
     font-weight: 500;
 }
+.tech-items2 {
+    color: var(--neon-cyan);
+    font-weight: 400;
+}
 
 .data-border {
     width: 50px;
