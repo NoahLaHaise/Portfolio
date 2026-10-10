@@ -1,155 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional Resume - Noah LaHaise">
-    <title>RESUME.SYS // NOAH_LAHAISE</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résumé — Noah LaHaise</title>
+  <meta name="description" content="Résumé of Noah LaHaise, Software Developer II at RF-SMART: production AI tooling, .NET and X++ development across Microsoft D365 and AX.">
+  <meta name="theme-color" content="#efede6">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%232626a6'/><text x='16' y='24' font-family='Georgia,serif' font-size='22' fill='%23efede6' text-anchor='middle'>N</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="resume-page">
-    <!-- Scanline Overlay -->
-    <div class="scanlines"></div>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="paper" aria-hidden="true"></div>
 
-    <!-- Grid Background -->
-    <div class="grid-bg"></div>
-
-    <!-- Navigation Bar -->
-    <nav class="top-nav">
-        <a href="index.html" class="nav-link">[HOME]</a>
-        <span class="nav-sep">//</span>
-        <a href="resume.html" class="nav-link active">[RESUME]</a>
-        <span class="nav-sep">//</span>
-        <a href="projects.html" class="nav-link">[PROJECTS]</a>
-        <span class="nav-sep">//</span>
-        <a href="contact.html" class="nav-link">[CONTACT]</a>
+<div class="wrap">
+  <header class="top">
+    <a href="index.html" class="mark" aria-label="Noah LaHaise — home">N<i>.</i>L<i>.</i></a>
+    <nav class="links" aria-label="Primary">
+      <a href="projects.html">Work</a>
+      <a href="resume.html" aria-current="page">Résumé</a>
+      <a href="contact.html">Contact</a>
     </nav>
+    <div class="meta"><span class="dot"></span> Portfolio — MMXXVI</div>
+  </header>
 
-    <!-- Main Content -->
-    <main class="main-container">
-        <!-- Page Header -->
-        <header class="page-header">
-            <div class="header-tag">&lt;PROFESSIONAL_RESUME&gt;</div>
-            <h1 class="page-title glitch-text" data-text="WORK_EXPERIENCE">WORK_EXPERIENCE</h1>
-        </header>
+  <main id="main">
+    <section class="hero">
+      <div class="eyebrow">
+        <span>Index № 03 — Curriculum Vitae</span>
+        <span>Software Developer II · RF-SMART</span>
+      </div>
+      <h1 class="display sm"><span class="w"><em>Ré</em>sumé</span></h1>
+      <div class="page-lede">
+        <p>Four years building production software — from <em>AI tooling</em> used across sales, marketing and support to the <em>enterprise ERP integrations</em> behind a warehouse management product.</p>
+      </div>
 
-        <!-- Work Experience -->
-        <section class="data-section">
-            <div class="section-label">
-                <span class="label-text">EMPLOYMENT_HISTORY</span>
-                <span class="label-line"></span>
+      <figure class="plate-wrap">
+        <div class="plate band">
+          <canvas data-parthenon data-yaw="1.5708" data-dist="78" data-ty="11" data-cy="-4.5" data-pan="0" data-moon=".72,.27,.075" data-t0="70" aria-label="Dithered rendering of a temple's front facade in fog"></canvas>
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </div>
+        <figcaption class="caption">
+          <span><b>PL. 03</b> — West pediment, head-on. Eight columns across the front.</span>
+          <span>2022 — Present</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <div class="cv">
+      <section class="cv-section" aria-labelledby="exp">
+        <h2 class="label" id="exp">(Experience)</h2>
+        <div class="body">
+          <article class="role">
+            <div class="role-head">
+              <h3>Software Developer II</h3>
+              <span class="when">2022 — Present</span>
             </div>
+            <p class="org">RF-SMART</p>
+            <ul>
+              <li>Build and maintain internal AI tooling in Python — retrieval-augmented generation, PostgreSQL and AWS Bedrock — serving business-critical data through REST APIs. Pipelines integrate Zoom, Smartsheet and NetSuite to automate time-consuming manual workflows for the sales, marketing and support teams.</li>
+              <li>Build and maintain an enterprise .NET C# application integrating with the Microsoft Dynamics ERP behind RF-SMART’s WMS product, deployed to enterprise warehouse customers.</li>
+              <li>Lead developer for X++ and C# customizations across D365 Finance &amp; Operations and legacy AX 2012 / AX 2009 environments, and the company’s primary technical resource for its Dynamics ecosystem.</li>
+            </ul>
+          </article>
 
-            <div class="data-block">
-                <div class="data-header">
-                    <h3 class="data-title">SOFTWARE DEVELOPER II</h3>
-                    <span class="data-date">[2022_PRESENT]</span>
-                </div>
-                <div class="data-company">@ RF-SMART</div>
-                <ul class="data-list">
-                    <li><span class="list-marker">&gt;</span>Built and maintained internal AI tooling using Python, Retrieval-Augmented Generation (RAG), 
-                    PostgreSQL, and AWS Bedrock to serve business-critical data via REST APIs. Pipelines integrate internal 
-                    systems such as Zoom, Smartsheet, and NetSuite to automate time-consuming manual workflows for the 
-                    sales, marketing and support teams. </li>
-                    <li><span class="list-marker">&gt;</span> Built and maintain an enterprise .NET C# application integrating with the Microsoft 
-                    Dynamics ERP behind RF-SMART’s WMS product, deployed to enterprise warehouse customers. </li>
-                    <li><span class="list-marker">&gt;</span> Lead developer for X++ and C# customizations across D365 Finance & Operations 
-                    and legacy AX 2012 / AX 2009 environments, and the company's primary technical resource for its 
-                    Dynamics ecosystem.  </li>
-                </ul>
-                <div class="data-border"></div>
+          <article class="role">
+            <div class="role-head">
+              <h3>Credit Analyst Intern</h3>
+              <span class="when">2022</span>
             </div>
+            <p class="org">Landstar</p>
+            <ul>
+              <li>Researched the creditworthiness of shipping clients to mitigate financial risk.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
 
-            <div class="data-block">
-                <div class="data-header">
-                    <h3 class="data-title">Credit Analyst Intern</h3>
-                    <span class="data-date">[2022]</span>
-                </div>
-                <div class="data-company">Landstar</div>
-                <ul class="data-list">
-                    <li><span class="list-marker">&gt;</span> Researched creditworthiness of shipping clients to mitigate financial risk.</li>
-                </ul>
-                <div class="data-border"></div>
+      <section class="cv-section" aria-labelledby="edu">
+        <h2 class="label" id="edu">(Education)</h2>
+        <div class="body">
+          <article class="role">
+            <div class="role-head">
+              <h3>Bachelor’s in Finance, <em>minor in Computer Science</em></h3>
+              <span class="when">Spring 2023</span>
             </div>
-        </section>
+            <p class="org">University of North Florida</p>
+          </article>
+        </div>
+      </section>
 
-        <!-- Education -->
-        <section class="data-section">
-            <div class="section-label">
-                <span class="label-text">EDUCATION_DATA</span>
-                <span class="label-line"></span>
-            </div>
+      <section class="cv-section" aria-labelledby="skills">
+        <h2 class="label" id="skills">(Skills)</h2>
+        <div class="body skills">
+          <div>
+            <h3>Languages</h3>
+            <ul><li>Python</li><li>C#</li><li>X++</li><li>SQL</li><li>HTML / CSS</li></ul>
+          </div>
+          <div>
+            <h3>Tools &amp; Platforms</h3>
+            <ul><li>AWS</li><li>PostgreSQL</li><li>SQL Server</li><li>Docker</li><li>Git &amp; GitHub</li><li>Visual Studio / VS Code</li></ul>
+          </div>
+          <div>
+            <h3>Strengths</h3>
+            <ul><li>Problem solving</li><li>Leadership</li><li>Project management</li><li>Communication</li><li>Team collaboration</li></ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
 
-            <div class="data-block">
-                <div class="data-header">
-                    <h3 class="data-title">BACHELORS IN FINANCE & MINOR IN CS</h3>
-                </div>
-                <div class="data-company">@ University of North Florida</div>
-                <div class="data-meta">Graduated Spring 2023</div>
-                <div class="data-border"></div>
-            </div>
-        </section>
+<footer class="end">
+  <canvas aria-hidden="true"></canvas>
+  <div class="wrap end-inner">
+    <p class="cta">Let’s build<br><em>what’s next.</em></p>
+    <div class="row">
+      <a href="mailto:noah.lahaise1@gmail.com">Email</a>
+      <a href="https://github.com/NoahLaHaise" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/noah-lahaise-886312169/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+    <div class="legal"><span>© 2026 Noah LaHaise</span><span>Jacksonville, FL</span></div>
+  </div>
+</footer>
 
-        <!-- Skills -->
-        <section class="data-section">
-            <div class="section-label">
-                <span class="label-text">TECHNICAL_SKILLS</span>
-                <span class="label-line"></span>
-            </div>
-
-            <div class="skills-matrix">
-                <div class="skill-col">
-                    <div class="skill-header">LANGUAGES</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C#</span>
-                        <span class="skill-tag">X++</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">HTML/CSS</span>
-                    </div>
-                </div>
-
-                <div class="skill-col">
-                    <div class="skill-header">TOOLS_&_FRAMEWORKS</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git & GitHub</span>
-                        <span class="skill-tag">VS & VS Code</span>
-                        <span class="skill-tag">SQL Server</span>
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">AWS</span>
-                    </div>
-                </div>
-
-                <div class="skill-col">
-                    <div class="skill-header">SOFT_SKILLS</div>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Problem Solving</span>
-                        <span class="skill-tag">Team Collaboration</span>
-                        <span class="skill-tag">Communication</span>
-                        <span class="skill-tag">Project Management</span>
-                        <span class="skill-tag">Leadership</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer-minimal">
-            <div class="contact-ascii">
-                <pre>
-   ╔══════════════════════════════════╗
-   ║           NOAH LAHAISE           ║
-   ╚══════════════════════════════════╝
-                </pre>
-            </div>
-        </footer>
-    </main>
-
-    <script src="js/glitch.js"></script>
-    <script src="js/main.js"></script>
+<script src="js/parthenon.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
