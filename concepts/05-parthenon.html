@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept 05 — Parthenon · Noah LaHaise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #efede6;
+    --paper-2: #e6e3d9;
+    --ink: #2626a6;
+    --ink-deep: #14146e;
+    --ink-soft: rgba(38, 38, 166, .55);
+    --rule: rgba(38, 38, 166, .22);
+    --serif: "Instrument Serif", "Times New Roman", serif;
+    --mono: "DM Mono", ui-monospace, monospace;
+    --gutter: clamp(1rem, 4vw, 3.5rem);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--ink); color: var(--paper); }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- paper texture ---------- */
+  .paper {
+    position: fixed; inset: 0; pointer-events: none; z-index: 50;
+    mix-blend-mode: multiply; opacity: .55;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .55  0 0 0 0 .52  0 0 0 0 .45  0 0 0 -1.4 1.05'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .paper::after { /* long fibres */
+    content: ""; position: absolute; inset: 0; opacity: .22;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.004 .09' numOctaves='2' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .48  0 0 0 0 .42  0 0 0 -2.2 1.25'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+  }
+
+  /* ---------- layout ---------- */
+  .wrap { padding-inline: var(--gutter); max-width: 1480px; margin: 0 auto; }
+
+  header.top {
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+    padding-block: 1.4rem; border-bottom: 1px solid var(--rule);
+    text-transform: uppercase; letter-spacing: .14em; font-size: 11px;
+  }
+  .mark { font-family: var(--serif); font-size: 26px; letter-spacing: 0; text-transform: none; line-height: 1; }
+  .mark i { font-style: italic; }
+  nav.links { display: flex; gap: 2.2rem; }
+  nav.links a { position: relative; padding-block: .2rem; }
+  nav.links a::after {
+    content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: currentColor;
+    transition: right .35s cubic-bezier(.2,.7,.1,1);
+  }
+  nav.links a:hover::after { right: 0; }
+  .top .meta { justify-self: end; display: flex; align-items: center; gap: .6rem; }
+  .dot { width: 7px; height: 7px; background: var(--ink); display: inline-block; animation: blink 2.4s steps(2) infinite; }
+  @keyframes blink { 50% { opacity: .15; } }
+
+  /* ---------- hero ---------- */
+  .hero { padding-top: clamp(2.5rem, 7vw, 6rem); position: relative; }
+  .eyebrow {
+    display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    text-transform: uppercase; letter-spacing: .16em; font-size: 11px; color: var(--ink-soft);
+    margin-bottom: 1.2rem;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(4rem, 15.5vw, 15.5rem);
+    line-height: .82; letter-spacing: -.035em;
+    position: relative; z-index: 2;
+  }
+  h1 .l2 { display: block; padding-left: 12vw; }
+  h1 em { font-style: italic; }
+  h1 span.w { display: inline-block; opacity: 0; transform: translateY(.18em); animation: rise 1.1s cubic-bezier(.2,.7,.1,1) forwards; }
+  h1 .l2 span.w { animation-delay: .12s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  .plate-wrap { position: relative; margin-top: clamp(1rem, 2.5vw, 2rem); z-index: 1; }
+  .plate {
+    position: relative; width: 100%; aspect-ratio: 21 / 9;
+    background: linear-gradient(to top, var(--ink), #6b70e0 55%, #c9c6f2); overflow: hidden;
+    opacity: 0; animation: fade 1.4s .35s ease forwards;
+  }
+  @keyframes fade { to { opacity: 1; } }
+  .plate canvas { width: 100%; height: 100%; display: block; image-rendering: pixelated; image-rendering: crisp-edges; }
+  .plate .corner {
+    position: absolute; width: 14px; height: 14px; border: 1px solid var(--paper); opacity: .8; mix-blend-mode: difference;
+  }
+  .corner.tl { top: 12px; left: 12px; border-right: 0; border-bottom: 0; }
+  .corner.tr { top: 12px; right: 12px; border-left: 0; border-bottom: 0; }
+  .corner.bl { bottom: 12px; left: 12px; border-right: 0; border-top: 0; }
+  .corner.br { bottom: 12px; right: 12px; border-left: 0; border-top: 0; }
+  .caption {
+    display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    padding-top: .75rem; font-size: 11px; letter-spacing: .08em; color: var(--ink-soft);
+  }
+  .caption b { font-weight: 500; color: var(--ink); }
+
+  /* ---------- intro ---------- */
+  .intro {
+    display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem;
+    padding-block: clamp(4rem, 10vw, 9rem);
+  }
+  .intro .label { grid-column: 1 / span 3; text-transform: uppercase; letter-spacing: .16em; font-size: 11px; color: var(--ink-soft); }
+  .intro p.lede {
+    grid-column: 4 / span 8;
+    font-family: var(--serif); font-size: clamp(1.7rem, 3.3vw, 3.1rem); line-height: 1.08; letter-spacing: -.01em;
+    text-indent: 3em;
+  }
+  .intro p.lede em { font-style: italic; }
+  .intro .facts {
+    grid-column: 4 / span 8; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    border-top: 1px solid var(--rule); padding-top: 1.2rem; margin-top: 1rem;
+  }
+  .facts dt { text-transform: uppercase; letter-spacing: .16em; font-size: 10px; color: var(--ink-soft); }
+  .facts dd { font-size: 13px; margin-top: .3rem; }
+
+  /* ---------- work index ---------- */
+  .work-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 1px solid var(--ink); padding-bottom: .8rem;
+  }
+  .work-head h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.4rem, 5vw, 4.2rem); letter-spacing: -.02em; line-height: 1; }
+  .work-head h2 em { font-style: italic; }
+  .work-head span { text-transform: uppercase; letter-spacing: .16em; font-size: 11px; color: var(--ink-soft); }
+
+  ol.index { list-style: none; }
+  ol.index li { border-bottom: 1px solid var(--rule); }
+  ol.index a {
+    display: grid; grid-template-columns: 4rem 1fr 1.2fr 5rem 2rem; gap: 1.5rem; align-items: baseline;
+    padding-block: 1.35rem; position: relative; isolation: isolate;
+  }
+  ol.index a::before { /* dithered wipe on hover */
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background-image: radial-gradient(var(--ink) 1px, transparent 1.2px);
+    background-size: 4px 4px; opacity: 0; transform: scaleX(0); transform-origin: left;
+    transition: transform .55s cubic-bezier(.2,.7,.1,1), opacity .2s;
+  }
+  ol.index a:hover::before { opacity: .12; transform: scaleX(1); }
+  .n { font-size: 11px; color: var(--ink-soft); }
+  .t { font-family: var(--serif); font-size: clamp(1.5rem, 2.6vw, 2.3rem); line-height: 1.05; letter-spacing: -.01em; transition: transform .45s cubic-bezier(.2,.7,.1,1); }
+  ol.index a:hover .t { transform: translateX(.6rem); font-style: italic; }
+  .s { font-size: 11.5px; color: var(--ink-soft); letter-spacing: .02em; }
+  .y { font-size: 11px; text-align: right; }
+  .arr { justify-self: end; transition: transform .35s; }
+  ol.index a:hover .arr { transform: translate(3px, -3px); }
+
+  /* ---------- footer ---------- */
+  footer.end {
+    margin-top: clamp(5rem, 12vw, 10rem); background: var(--ink); color: var(--paper);
+    position: relative; overflow: hidden;
+  }
+  footer.end canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; opacity: .9; }
+  .end-inner { position: relative; padding-block: clamp(3rem, 8vw, 6rem) 1.5rem; }
+  .end h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(3rem, 10vw, 9rem); line-height: .9; letter-spacing: -.03em; }
+  .end h3 em { font-style: italic; }
+  .end .row { display: flex; flex-wrap: wrap; gap: 1.2rem 2.5rem; margin-top: 2.5rem; text-transform: uppercase; letter-spacing: .14em; font-size: 11px; }
+  .end .row a { border-bottom: 1px solid rgba(239,237,230,.4); padding-bottom: .2rem; }
+  .end .row a:hover { border-color: var(--paper); }
+  .end .legal { display: flex; justify-content: space-between; margin-top: 4rem; font-size: 10px; letter-spacing: .14em; opacity: .6; text-transform: uppercase; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 860px) {
+    header.top { grid-template-columns: 1fr auto; }
+    header.top .meta { display: none; }
+    nav.links { gap: 1.1rem; }
+    .plate { aspect-ratio: 16 / 10; }
+    h1 .l2 { padding-left: 0; }
+    .intro .label, .intro p.lede, .intro .facts { grid-column: 1 / -1; }
+    .intro .facts { grid-template-columns: 1fr 1fr; }
+    ol.index a { grid-template-columns: 2.2rem 1fr 2rem; gap: .4rem 1rem; }
+    .s { grid-column: 2 / 3; }
+    .y { display: none; }
+    .arr { grid-row: 1; grid-column: 3; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="paper" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header class="top">
+    <a href="#" class="mark">N<i>.</i>L<i>.</i></a>
+    <nav class="links">
+      <a href="#work">Work</a>
+      <a href="#">Résumé</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="meta"><span class="dot"></span> Portfolio — MMXXVI</div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">
+      <span>Software Developer · AI Systems · D365 WMS</span>
+      <span>Index № 01</span>
+    </div>
+    <h1><span class="w">Noah</span><span class="l2"><span class="w"><em>La</em>Haise</span></span></h1>
+
+    <div class="plate-wrap">
+      <div class="plate">
+        <canvas id="scene" aria-label="Slowly animated, dithered rendering of a Greek temple in drifting fog"></canvas>
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      </div>
+      <div class="caption">
+        <span><b>PL. 01</b> — Parthenon in morning fog. Raymarched &amp; Bayer-dithered live in the browser.</span>
+        <span>Light shifts over ~100 s ↗</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="label">(About)</div>
+    <p class="lede">Four years building the <em>unglamorous machinery</em> that makes companies faster — internal AI systems for sales, support and services, and warehouse software deep inside the Microsoft&nbsp;D365 ecosystem.</p>
+    <dl class="facts">
+      <div><dt>Currently</dt><dd>Software Developer II<br>RF-SMART</dd></div>
+      <div><dt>Focus</dt><dd>RAG · LLM tooling<br>X++ / C# · WMS</dd></div>
+      <div><dt>Studied</dt><dd>Finance, minor CS<br>Univ. of North Florida</dd></div>
+    </dl>
+  </section>
+
+  <section id="work">
+    <div class="work-head">
+      <h2>Selected <em>work</em></h2>
+      <span>06 entries</span>
+    </div>
+    <ol class="index">
+      <li><a href="#"><span class="n">01</span><span class="t">SharePoint → RAG Pipeline</span><span class="s">Python · Terraform · Lambda · Bedrock</span><span class="y">2026</span><span class="arr">↗</span></a></li>
+      <li><a href="https://github.com/NoahLaHaise/stock-MCP"><span class="n">02</span><span class="t">Stock MCP</span><span class="s">Python · FastMCP · Cloudflare</span><span class="y">2026</span><span class="arr">↗</span></a></li>
+      <li><a href="#"><span class="n">03</span><span class="t">Zoom Transcript Summaries</span><span class="s">Flask · PostgreSQL · S3 Vectors</span><span class="y">2025–26</span><span class="arr">↗</span></a></li>
+      <li><a href="https://github.com/NoahLaHaise/RaspAir-Monitor"><span class="n">04</span><span class="t">Air Quality Monitor</span><span class="s">Raspberry Pi · SEN66 · Flask</span><span class="y">2026</span><span class="arr">↗</span></a></li>
+      <li><a href="https://github.com/NoahLaHaise/TelegramStockProgram"><span class="n">05</span><span class="t">Telegram Stock Alerts</span><span class="s">Python · C++ · SQLite</span><span class="y">2026</span><span class="arr">↗</span></a></li>
+      <li><a href="#"><span class="n">06</span><span class="t">StockChat</span><span class="s">React Native · Flask · OpenRouter</span><span class="y">2025</span><span class="arr">↗</span></a></li>
+    </ol>
+  </section>
+</div>
+
+<footer class="end" id="contact">
+  <canvas id="footfx" aria-hidden="true"></canvas>
+  <div class="wrap end-inner">
+    <h3>Let’s build<br><em>something useful.</em></h3>
+    <div class="row">
+      <a href="#">Email</a>
+      <a href="https://github.com/NoahLaHaise">GitHub</a>
+      <a href="https://www.linkedin.com/in/noah-lahaise-886312169/">LinkedIn</a>
+    </div>
+    <div class="legal"><span>© 2026 Noah LaHaise</span><span>Concept 05 / Parthenon</span></div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------- hero plate: raymarched Parthenon in fog, Bayer-dithered (WebGL) ---------------- */
+  // Rendered at one fragment per dither cell (3 css px), then upscaled with image-rendering: pixelated.
+  const CELL = 3;
+  const cv = document.getElementById('scene');
+  const gl = cv.getContext('webgl', { antialias: false, premultipliedAlpha: false });
+  const FRAG = `
+  precision highp float;
+  uniform vec2 res; uniform float t; uniform vec2 m;
+
+  const float SP = 4.25;              // column spacing
+  const float LH = 34.0;              // half-length (8 * SP): 17 columns down the long side
+  const float WH = 14.875;            // half-width (3.5 * SP): 8 columns across the front
+  const float CH = 10.4;              // column height
+
+  float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+  float noise(vec2 p){ vec2 i = floor(p), f = fract(p); vec2 u = f*f*(3.-2.*f);
+    return mix(mix(hash(i), hash(i+vec2(1,0)), u.x), mix(hash(i+vec2(0,1)), hash(i+vec2(1,1)), u.x), u.y); }
+  float fbm(vec2 p){ float v = 0., a = .5; for (int i = 0; i < 4; i++){ v += a*noise(p); p *= 2.03; a *= .5; } return v; }
+  float bayer2(vec2 a){ a = floor(a); return fract(a.x/2. + a.y*a.y*.75); }
+  float bayer4(vec2 a){ return bayer2(.5*a)*.25 + bayer2(a); }
+  float bayer8(vec2 a){ return bayer4(.5*a)*.25 + bayer2(a); }
+
+  float sdBox(vec3 p, vec3 b){ vec3 q = abs(p) - b; return length(max(q, 0.)) + min(max(q.x, max(q.y, q.z)), 0.); }
+
+  float column(vec3 p){
+    float h = clamp(p.y / CH, 0., 1.);
+    float r = .95 - .16*h;                                   // taper
+    r -= .05*abs(sin(atan(p.z, p.x + 1e-4) * 10.));          // 20 flutes
+    float d = max((length(p.xz) - r) * .8, abs(p.y - CH*.5) - CH*.5);
+    float cap = sdBox(p - vec3(0., CH - .22, 0.), vec3(1.22, .22, 1.22));
+    return min(d, cap);
+  }
+
+  vec3 gCam;                                                  // camera position, set in main()
+
+  float groundH(vec2 xz){
+    float far = smoothstep(42., 95., length(xz * vec2(.8, 1.)));
+    float near = 1. - smoothstep(-58., -34., xz.y);           // foreground dunes between the viewer and the temple
+    near *= smoothstep(8., 22., length(xz - gCam.xz));        // ...but never under the camera itself
+    if (far + near <= 0.) return -1.6;                        // flat precinct around the temple
+    float n = fbm(xz * .03);
+    return -1.6 + far * (fbm(xz * .018) * 9. - 2.5) + near * (n * n * 16. - 1.5);
+  }
+
+  vec3 figurePos(){
+    float x = 45. - mod(t * .3, 70.);                         // a very slow walk across the precinct, right to left
+    return vec3(x, -1.6, -WH - 14.);
+  }
+
+  // returns (distance, material): 1 marble, 2 cella, 3 ground, 4 figure
+  vec2 map(vec3 p){
+    // stylobate: three steps
+    float d = sdBox(p - vec3(0., -.25, 0.), vec3(LH + 2.2, .25, WH + 2.2));
+    d = min(d, sdBox(p - vec3(0., -.75, 0.), vec3(LH + 2.9, .25, WH + 2.9)));
+    d = min(d, sdBox(p - vec3(0., -1.25, 0.), vec3(LH + 3.6, .25, WH + 3.6)));
+
+    // peristyle: long sides, then the short ends
+    vec3 q = p; q.z = abs(q.z) - WH; q.x -= SP * clamp(floor(q.x / SP + .5), -8., 8.);
+    d = min(d, column(q));
+    q = p; q.x = abs(q.x) - LH; q.z -= SP * (clamp(floor(q.z / SP), -4., 3.) + .5);
+    d = min(d, column(q));
+
+    // entablature, cornice, pitched roof
+    d = min(d, sdBox(p - vec3(0., CH + 1.3, 0.), vec3(LH + 1.25, 1.3, WH + 1.25)));
+    d = min(d, sdBox(p - vec3(0., CH + 2.75, 0.), vec3(LH + 1.7, .15, WH + 1.7)));
+    float y0 = CH + 2.9, s = .24, wr = WH + 1.7;
+    float roof = max(max(abs(p.x) - (LH + 1.7), ((p.y - y0) + s*abs(p.z) - s*wr) / sqrt(1. + s*s)), y0 - p.y);
+    d = min(d, roof);
+    vec2 res = vec2(d, 1.);
+
+    float cella = sdBox(p - vec3(0., CH*.5, 0.), vec3(LH - 6., CH*.5, WH - 4.6));
+    if (cella < res.x) res = vec2(cella, 2.);
+
+    float g = (p.y - groundH(p.xz)) * .6;
+    if (g < res.x) res = vec2(g, 3.);
+
+    vec3 f = p - figurePos();
+    float fig = length(vec2(length(f.xz), max(abs(f.y - .75) - .55, 0.))) - .22;   // capsule body
+    fig = min(fig, length(f - vec3(0., 1.62, 0.)) - .16);                          // head
+    if (fig < res.x) res = vec2(fig, 4.);
+    return res;
+  }
+
+  vec3 calcNormal(vec3 p){
+    vec2 e = vec2(.02, -.02);
+    return normalize(e.xyy*map(p + e.xyy).x + e.yyx*map(p + e.yyx).x + e.yxy*map(p + e.yxy).x + e.xxx*map(p + e.xxx).x);
+  }
+
+  float shadow(vec3 ro, vec3 rd){
+    float r = 1., s = .3;
+    for (int i = 0; i < 40; i++){
+      float h = map(ro + rd*s).x;
+      r = min(r, 8.*h/s);
+      s += clamp(h, .25, 4.);
+      if (r < .01 || s > 110.) break;
+    }
+    return clamp(r, 0., 1.);
+  }
+
+  vec3 ramp(float b){
+    b = clamp(b, 0., 1.);
+    vec3 c = mix(vec3(.08,.08,.38), vec3(.15,.15,.65), smoothstep(0., .22, b));   // deep -> ultramarine ink
+    c = mix(c, vec3(.40,.44,.88), smoothstep(.2, .5, b));                           // periwinkle
+    c = mix(c, vec3(.72,.70,.95), smoothstep(.45, .75, b));                         // lavender
+    return mix(c, vec3(.94,.93,.90), smoothstep(.72, 1., b));                       // paper
+  }
+
+  void main(){
+    float aspect = res.x / res.y;
+    vec2 p = (gl_FragCoord.xy - .5*res) / res.y;
+
+    // camera: three-quarter view of the west front, eye level, drifting a hair with the cursor
+    float yaw = .64 + (m.x - .5) * .05;
+    float D = 80. * max(1., 1.9 / aspect);
+    vec3 tgt = vec3(0., 8.5, 0.);
+    vec3 ro = tgt + vec3(-sin(yaw) * D, -4.5 + (m.y - .5) * -1.2, -cos(yaw) * D);
+    vec3 fw = normalize(tgt - ro);
+    vec3 rt = normalize(cross(vec3(0., 1., 0.), fw));
+    vec3 up = cross(fw, rt);
+    float pan = clamp(aspect - 1.6, 0., 1.) * 16.;          // wide plates: slide the temple left of centre
+    ro += rt * pan;
+    gCam = ro;
+    const float FOC = 1.6;
+    vec3 rd = normalize(p.x*rt + p.y*up + FOC*fw);
+
+    // sun swings slowly from the left, ~100 s per cycle, so column shadows creep across the cella
+    vec3 sun = normalize(vec3(-.8 + .22*sin(t*.06), .5 + .07*sin(t*.045), -.28 + .12*cos(t*.06)));
+
+    // sky: deep at the zenith, washing out toward the horizon, faint drifting cloud
+    float sky = mix(.80, .10, smoothstep(-.12, .5, p.y));
+    sky += .07 * (fbm(vec2(p.x*2.2 + t*.006, p.y*7.) ) - .5);
+
+    // moon / sphere, engraved like the reference prints
+    vec2 mp = vec2(.5*aspect*.66, .27), md = (p - mp) / .085;
+    float mr = dot(md, md);
+    if (mr < 1.){
+      vec3 n = vec3(md.x, md.y, sqrt(1. - mr));
+      float lam = max(0., dot(n, normalize(vec3(-.7, .4, .6))));
+      sky = .08 + .85*lam;
+      if (mod(gl_FragCoord.y, 2.) < 1.) sky *= .7;
+    }
+
+    float b = sky;
+    float s = 0.; vec2 h = vec2(0.);
+    for (int i = 0; i < 110; i++){
+      h = map(ro + rd*s);
+      if (h.x < .01*s*.05 + .005 || s > 420.) break;
+      s += h.x;
+    }
+    if (s < 420.){
+      vec3 pos = ro + rd*s;
+      vec3 n = calcNormal(pos);
+      float dif = max(dot(n, sun), 0.);
+      float sh = dif > 0. ? shadow(pos + n*.05, sun) : 0.;
+      float amb = .32 + .22*n.y;
+      float ao = clamp(map(pos + n*1.2).x / 1.2, 0., 1.);
+      float alb = 1.;
+      if (h.y == 2.) alb = .55;
+      if (h.y == 3.) alb = .62;
+      if (h.y == 1.){
+        // triglyphs in the frieze band, roof tiles on the slopes
+        float along = abs(n.x) > .5 ? pos.z : pos.x;
+        if (pos.y > CH + .95 && pos.y < CH + 2.2 && fract(along / (SP*.5)) < .16) alb = .6;
+        if (pos.y > CH + 2.95 && n.y > .5 && fract(pos.x * .9) < .12) alb = .8;
+      }
+      b = alb * (amb*(.55 + .45*ao) + .95*dif*sh);
+      if (h.y == 4.) b = .04;
+
+      // fog: distance haze + a low, slowly drifting ground fog that swallows the base
+      float haze = 1. - exp(-s * .0032);
+      float low = exp(-max(pos.y + 1.6, 0.) * .38) * smoothstep(.3, .8, fbm(pos.xz*.035 + vec2(t*.012, t*.005)));
+      float fog = clamp(haze + low*.75*(1. - haze), 0., 1.);
+      if (h.y == 4.) fog *= .35;
+      b = mix(b, .86, fog);
+    }
+
+    // breathing mist band across the horizon, independent of geometry
+    float by = (p.y + .16) / .12;
+    float band = exp(-by*by) * (.35 + .25*fbm(vec2(p.x*1.5 - t*.01, t*.004)));
+    b = mix(b, .88, band * .55);
+
+    b *= mix(1., .72, 1. - smoothstep(-.5, -.18, p.y));        // weight the foreground, like the reference prints
+
+    vec3 col = ramp(b);
+    float bay = bayer8(gl_FragCoord.xy) - .5;
+    col = floor(col*5. + .5 + bay) / 5.;
+    gl_FragColor = vec4(col, 1.);
+  }`;
+  const VERT = 'attribute vec2 a; void main(){ gl_Position = vec4(a, 0., 1.); }';
+
+  let uRes, uT, uM, mouse = [0.5, 0.5], target = [0.5, 0.5];
+  if (gl) {
+    const sh = (type, src) => { const x = gl.createShader(type); gl.shaderSource(x, src); gl.compileShader(x);
+      if (!gl.getShaderParameter(x, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(x)); return x; };
+    const prog = gl.createProgram();
+    gl.attachShader(prog, sh(gl.VERTEX_SHADER, VERT));
+    gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FRAG));
+    gl.linkProgram(prog); gl.useProgram(prog);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(prog, 'a');
+    gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    uRes = gl.getUniformLocation(prog, 'res'); uT = gl.getUniformLocation(prog, 't');
+    uM = gl.getUniformLocation(prog, 'm');
+  }
+  function resize() {
+    const r = cv.getBoundingClientRect();
+    cv.width = Math.max(1, Math.round(r.width / CELL)); cv.height = Math.max(1, Math.round(r.height / CELL));
+    if (gl) gl.viewport(0, 0, cv.width, cv.height);
+  }
+  const T0 = 40;                                       // start mid-cycle so the first frame is well lit
+  function draw(now) {
+    if (!gl) return;
+    mouse[0] += (target[0] - mouse[0]) * .015; mouse[1] += (target[1] - mouse[1]) * .015;
+    gl.uniform2f(uRes, cv.width, cv.height); gl.uniform1f(uT, T0 + now / 1000);
+    gl.uniform2f(uM, mouse[0], mouse[1]);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+  resize();
+  let last = -1e9, visible = true;
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(cv);
+  (function loop(now = 0) {
+    if (reduce) { draw(0); return; }
+    requestAnimationFrame(loop);
+    if (!visible || now - last < 1000 / 30) return;    // 30 fps is plenty for motion this slow
+    last = now; draw(now);
+  })();
+  addEventListener('resize', () => { resize(); draw(reduce ? 0 : performance.now()); });
+  cv.addEventListener('pointermove', e => {
+    const r = cv.getBoundingClientRect();
+    target = [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height];
+  });
+
+  /* ---------------- footer ordered-dither gradient ---------------- */
+  const fc = document.getElementById('footfx'), fx = fc.getContext('2d');
+  const B = [0,32,8,40,2,34,10,42,48,16,56,24,50,18,58,26,12,44,4,36,14,46,6,38,60,28,52,20,62,30,54,22,3,35,11,43,1,33,9,41,51,19,59,27,49,17,57,25,15,47,7,39,13,45,5,37,63,31,55,23,61,29,53,21];
+  let fw, fh, fimg, mx = 0.7;
+  function fresize() {
+    const r = fc.getBoundingClientRect();
+    fw = Math.round(r.width / 3); fh = Math.round(r.height / 3);
+    fc.width = fw; fc.height = fh; fimg = fx.createImageData(fw, fh);
+  }
+  function fdraw(t) {
+    const d = fimg.data;
+    for (let j = 0; j < fh; j++) for (let i = 0; i < fw; i++) {
+      const u = i / fw, v = j / fh;
+      const g = 0.55 * Math.exp(-((u - mx) ** 2) * 6 - ((v - 1.15) ** 2) * 3)
+              + 0.12 * Math.sin(u * 9 + t * 0.4 + v * 3) * v;
+      const on = g * 64 > B[(j & 7) * 8 + (i & 7)];
+      const p = (j * fw + i) * 4;
+      d[p] = 90; d[p + 1] = 90; d[p + 2] = 220; d[p + 3] = on ? 255 : 0;
+    }
+    fx.putImageData(fimg, 0, 0);
+  }
+  let fl = 0;
+  (function floop(now = 0) {
+    if (!reduce) requestAnimationFrame(floop);
+    if (now - fl < 66) return; fl = now; fdraw(now / 1000);
+  })();
+  fc.parentElement.addEventListener('pointermove', e => {
+    const r = fc.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width;
+  });
+  fresize(); fdraw(0);
+  addEventListener('resize', () => { fresize(); fdraw(0); });
+})();
+</script>
+</body>
+</html>

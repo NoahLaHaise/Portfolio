@@ -1,145 +1,56 @@
-// ======================
-// Mobile Navigation Toggle
-// ======================
+/* =========================================================================
+   Shared page behaviour: the ordered-dither glow behind the footer, and the
+   local-time readout in the header.
+   ========================================================================= */
+(() => {
+  // ---- header clock (Jacksonville time) ----
+  const clock = document.querySelector('[data-clock]');
+  if (clock) {
+    const fmt = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', hour12: false });
+    const tick = () => { clock.textContent = `JAX ${fmt.format(new Date())} ET`; };
+    tick(); setInterval(tick, 15000);
+  }
 
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
+  // ---- footer dither ----
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fc = document.querySelector('footer.end canvas');
+  if (!fc) return;
 
-// Toggle mobile menu
-function toggleMenu() {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-}
+  const fx = fc.getContext('2d');
+  const B = [0,32,8,40,2,34,10,42,48,16,56,24,50,18,58,26,12,44,4,36,14,46,6,38,60,28,52,20,62,30,54,22,
+             3,35,11,43,1,33,9,41,51,19,59,27,49,17,57,25,15,47,7,39,13,45,5,37,63,31,55,23,61,29,53,21];
+  let fw = 1, fh = 1, img, mx = 0.7, last = 0, visible = false;
 
-// Close menu when link is clicked
-function closeMenu() {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-}
-
-hamburger.addEventListener('click', toggleMenu);
-
-navLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
-});
-
-// ======================
-// Smooth Scrolling
-// ======================
-
-navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-
-        // Only prevent default and smooth scroll for anchor links (starting with #)
-        if (href && href.startsWith('#')) {
-            e.preventDefault();
-
-            const targetSection = document.querySelector(href);
-
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
-
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        }
-        // For regular page links (.html files), let the default behavior happen
-    });
-});
-
-// ======================
-// Navbar Background on Scroll
-// ======================
-
-const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 100) {
-        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
-    } else {
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+  function resize() {
+    const r = fc.getBoundingClientRect();
+    fw = Math.max(1, Math.round(r.width / 3)); fh = Math.max(1, Math.round(r.height / 3));
+    fc.width = fw; fc.height = fh; img = fx.createImageData(fw, fh);
+  }
+  function draw(t) {
+    const d = img.data;
+    for (let j = 0; j < fh; j++) for (let i = 0; i < fw; i++) {
+      const u = i / fw, v = j / fh;
+      const g = 0.5 * Math.exp(-((u - mx) ** 2) * 5 - ((v - 1.2) ** 2) * 3.2)
+              + 0.1 * Math.sin(u * 9 + t * 0.4 + v * 3) * v;
+      const p = (j * fw + i) * 4;
+      const lit = g * 64 > B[(j & 7) * 8 + (i & 7)];
+      const hot = g * 64 > B[(j & 7) * 8 + (i & 7)] + 22;   // a second, brighter tier near the core
+      d[p] = hot ? 138 : 42; d[p + 1] = hot ? 143 : 42; d[p + 2] = hot ? 248 : 208;
+      d[p + 3] = lit ? (hot ? 170 : 210) : 0;
     }
+    fx.putImageData(img, 0, 0);
+  }
 
-    lastScroll = currentScroll;
-});
-
-// ======================
-// Intersection Observer for Fade-in Animations
-// ======================
-
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe sections for animation
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.section');
-
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(section);
-    });
-});
-
-// ======================
-// Project Card Hover Effects
-// ======================
-
-const projectCards = document.querySelectorAll('.project-card');
-
-projectCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px)';
-    });
-
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
-
-// ======================
-// Lazy Loading for Images (Optional Enhancement)
-// ======================
-
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.add('loaded');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-
-    // If you add data-src attributes to images, they'll lazy load
-    const images = document.querySelectorAll('img[data-src]');
-    images.forEach(img => imageObserver.observe(img));
-}
-
-// ======================
-// Console Welcome Message
-// ======================
-
-console.log('%cWelcome to my Portfolio!', 'color: #2563eb; font-size: 20px; font-weight: bold;');
-console.log('%cInterested in the code? Check out the repository!', 'color: #6b7280; font-size: 14px;');
+  resize(); draw(0);
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(fc);
+  (function loop(now = 0) {
+    if (reduce) return;
+    requestAnimationFrame(loop);
+    if (!visible || now - last < 66) return;
+    last = now; draw(now / 1000);
+  })();
+  addEventListener('resize', () => { resize(); draw(performance.now() / 1000); });
+  fc.parentElement.addEventListener('pointermove', e => {
+    const r = fc.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width;
+  });
+})();

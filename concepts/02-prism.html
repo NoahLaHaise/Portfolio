@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept 02 — Prism · Noah LaHaise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@500;700;900&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --ink: #15161c;
+    --ink-2: #5d6070;
+    --ink-3: #9a9caa;
+    --line: #e2e2e6;
+    --accent: #5a5ce6;
+    --pill: #2b2c31;
+    --sans: "Geist", "Helvetica Neue", sans-serif;
+    --mono: "Geist Mono", ui-monospace, monospace;
+    --dot: "Doto", "Geist Mono", monospace;
+    --g: clamp(1rem, 2.4vw, 1.6rem);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-size: 15px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  ::selection { background: var(--accent); color: #fff; }
+  a { color: inherit; text-decoration: none; }
+
+  .grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 40; opacity: .35; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .4  0 0 0 0 .4  0 0 0 0 .45  0 0 0 -1.6 1.1'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* ---------- hero split ---------- */
+  .hero {
+    display: grid; grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
+    gap: var(--g); padding: var(--g); min-height: 100vh; min-height: 100svh;
+  }
+  .left {
+    position: relative; display: flex; flex-direction: column; justify-content: space-between;
+    padding: .2rem .4rem 1.4rem;
+    background-image: radial-gradient(#d5d6dc 1px, transparent 1.3px);
+    background-size: 22px 22px; background-position: -11px -11px;
+  }
+  nav.pill {
+    display: inline-flex; align-items: stretch; align-self: flex-start;
+    background: var(--pill); color: #c9cad2; font-size: 13.5px; padding: 4px;
+    box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 6px 20px -10px rgba(0,0,0,.4);
+  }
+  nav.pill .brand {
+    display: flex; align-items: center; gap: .5rem; color: #fff; padding: .45rem .95rem .45rem .7rem;
+    border-right: 1px solid #45464d; margin-right: 4px; font-weight: 500;
+  }
+  nav.pill .brand svg { width: 14px; height: 14px; }
+  nav.pill a.i { padding: .45rem .95rem; transition: background .2s, color .2s; }
+  nav.pill a.i:hover { color: #fff; }
+  nav.pill a.i.on { background: #45464d; color: #fff; }
+
+  .status { font-family: var(--mono); font-size: 11.5px; color: var(--ink-3); display: flex; gap: .55rem; align-items: center; margin-top: 2rem; }
+  .status i { width: 6px; height: 6px; background: #3ecf8e; border-radius: 50%; box-shadow: 0 0 0 3px rgba(62,207,142,.18); }
+
+  .copy { max-width: 34rem; }
+  h1 {
+    font-weight: 400; letter-spacing: -.035em; line-height: 1.02;
+    font-size: clamp(2.6rem, 4.6vw, 4.6rem);
+  }
+  h1 .dot {
+    font-family: var(--dot); font-weight: 900; letter-spacing: -.02em; font-size: 1.04em;
+    display: inline-block;
+  }
+  .lede { color: var(--ink-2); font-size: clamp(1rem, 1.25vw, 1.15rem); margin-top: 1.2rem; max-width: 30rem; line-height: 1.45; }
+  .ctas { display: flex; gap: .7rem; margin-top: 2rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: .55rem; padding: .8rem 1.25rem; font-size: 14.5px; font-weight: 500;
+    background: var(--accent); color: #fff; transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 8px 22px -12px var(--accent);
+  }
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 1px 0 rgba(255,255,255,.25) inset, 0 12px 26px -12px var(--accent); }
+  .btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+  .btn.ghost:hover { box-shadow: inset 0 0 0 1px var(--ink-3); }
+
+  .right {
+    position: relative; border-radius: 22px; overflow: hidden; background: #7b8ee0;
+    box-shadow: 0 30px 60px -40px rgba(40,40,120,.5);
+  }
+  .right canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .right .tag {
+    position: absolute; left: 16px; bottom: 16px; z-index: 2;
+    font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,.9);
+    background: rgba(21,22,28,.35); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    padding: .45rem .7rem; border-radius: 8px; display: flex; gap: .8rem;
+  }
+  .right .tag span:first-child { color: #fff; }
+  .right .ctrls { position: absolute; right: 16px; bottom: 16px; z-index: 2; display: flex; gap: 6px; }
+  .right .ctrls button {
+    font-family: var(--mono); font-size: 11px; color: #fff; cursor: pointer; border: 0;
+    background: rgba(21,22,28,.35); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    padding: .45rem .7rem; border-radius: 8px;
+  }
+  .right .ctrls button[aria-pressed="true"] { background: rgba(255,255,255,.9); color: var(--ink); }
+
+  /* ---------- below fold ---------- */
+  .ticker {
+    border-block: 1px solid var(--line); overflow: hidden; white-space: nowrap; margin-top: 2rem;
+    font-family: var(--dot); font-weight: 700; font-size: clamp(1.4rem, 2.6vw, 2.2rem); color: var(--ink-3);
+    padding-block: .9rem;
+  }
+  .ticker .track { display: inline-block; animation: tick 40s linear infinite; }
+  .ticker span { margin-right: 2.5rem; }
+  .ticker span b { color: var(--accent); font-weight: 900; }
+  @keyframes tick { to { transform: translateX(-50%); } }
+
+  section.work { padding: clamp(4rem, 8vw, 7rem) var(--g); max-width: 1400px; margin: 0 auto; }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .sec-head h2 { font-weight: 400; font-size: clamp(2rem, 3.4vw, 3rem); letter-spacing: -.03em; line-height: 1.05; }
+  .sec-head h2 .dot { font-family: var(--dot); font-weight: 900; }
+  .sec-head p { color: var(--ink-2); max-width: 26rem; }
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--g); }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+    display: flex; flex-direction: column; transition: transform .35s cubic-bezier(.2,.7,.1,1), box-shadow .35s;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 24px 40px -28px rgba(40,40,120,.35); }
+  .card .thumb { aspect-ratio: 16 / 10; position: relative; overflow: hidden; }
+  .card .thumb canvas { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+  .card .num { position: absolute; top: 12px; left: 14px; font-family: var(--dot); font-weight: 900; font-size: 28px; color: #fff; line-height: 1; }
+  .card .body { padding: 1.2rem 1.25rem 1.3rem; display: flex; flex-direction: column; gap: .6rem; flex: 1; }
+  .card h3 { font-weight: 500; font-size: 1.15rem; letter-spacing: -.01em; }
+  .card p { color: var(--ink-2); font-size: 14px; flex: 1; }
+  .chips { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .4rem; }
+  .chips span { font-family: var(--mono); font-size: 11px; color: var(--ink-2); background: var(--bg); border: 1px solid var(--line); padding: .15rem .5rem; border-radius: 6px; }
+  .more { display: inline-flex; gap: .4rem; align-items: center; margin-top: 2rem; font-weight: 500; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+
+  footer { padding: 2rem var(--g) 2.5rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-family: var(--mono); font-size: 12px; color: var(--ink-3); }
+  footer nav { display: flex; gap: 1.5rem; }
+  footer a:hover { color: var(--ink); }
+
+  /* entrance */
+  .rise { opacity: 0; transform: translateY(14px); animation: rise .9s cubic-bezier(.2,.7,.1,1) forwards; }
+  .d1 { animation-delay: .08s } .d2 { animation-delay: .16s } .d3 { animation-delay: .24s } .d4 { animation-delay: .32s }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  .right { animation: clip 1.3s cubic-bezier(.7,0,.2,1) forwards; clip-path: inset(0 0 100% 0 round 22px); }
+  @keyframes clip { to { clip-path: inset(0 0 0 0 round 22px); } }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .left { gap: 3rem; padding-bottom: .4rem; }
+    .right { aspect-ratio: 4 / 5; }
+    .cards { grid-template-columns: 1fr; }
+    nav.pill { font-size: 12.5px; }
+    nav.pill a.i { padding: .45rem .6rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<section class="hero">
+  <div class="left">
+    <div>
+      <nav class="pill rise">
+        <a href="#" class="brand">
+          <svg viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="5" y="0" width="4" height="4"/><rect x="0" y="5" width="4" height="4"/><rect x="10" y="5" width="4" height="4"/><rect x="5" y="10" width="4" height="4"/></svg>
+          LaHaise
+        </a>
+        <a href="#" class="i on">Home</a>
+        <a href="#work" class="i">Work</a>
+        <a href="#" class="i">Résumé</a>
+        <a href="#contact" class="i">Contact</a>
+      </nav>
+      <div class="status rise d1"><i></i> Software Developer II @ RF-SMART</div>
+    </div>
+
+    <div class="copy">
+      <h1 class="rise d2">Noah LaHaise builds calm, <span class="dot" id="scramble">intelligent</span> systems.</h1>
+      <p class="lede rise d3">Software developer with four years shipping internal AI tooling — RAG pipelines, LLM agents, summarisation — and production warehouse software in the Microsoft D365 ecosystem.</p>
+      <div class="ctas rise d4">
+        <a href="#work" class="btn">» View selected work</a>
+        <a href="#" class="btn ghost">Résumé ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <canvas id="gl" aria-label="Animated dithered light-refraction field"></canvas>
+    <div class="tag"><span>fig.01</span><span>refraction / bayer 8×8</span></div>
+    <div class="ctrls">
+      <button type="button" data-mode="1" aria-pressed="true">dither</button>
+      <button type="button" data-mode="0" aria-pressed="false">smooth</button>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="track">
+  <span>PYTHON</span><span><b>✦</b></span><span>AWS BEDROCK</span><span><b>✦</b></span><span>RAG</span><span><b>✦</b></span><span>X++</span><span><b>✦</b></span><span>C#</span><span><b>✦</b></span><span>POSTGRES</span><span><b>✦</b></span><span>TERRAFORM</span><span><b>✦</b></span><span>MCP</span><span><b>✦</b></span><span>D365 F&amp;O</span><span><b>✦</b></span>
+  <span>PYTHON</span><span><b>✦</b></span><span>AWS BEDROCK</span><span><b>✦</b></span><span>RAG</span><span><b>✦</b></span><span>X++</span><span><b>✦</b></span><span>C#</span><span><b>✦</b></span><span>POSTGRES</span><span><b>✦</b></span><span>TERRAFORM</span><span><b>✦</b></span><span>MCP</span><span><b>✦</b></span><span>D365 F&amp;O</span><span><b>✦</b></span>
+</div></div>
+
+<section class="work" id="work">
+  <div class="sec-head">
+    <h2>Selected <span class="dot">work</span></h2>
+    <p>A few things I’ve built recently — at work and on a Raspberry Pi on my desk.</p>
+  </div>
+  <div class="cards">
+    <a class="card" href="#">
+      <div class="thumb"><canvas data-seed="1"></canvas><span class="num">01</span></div>
+      <div class="body">
+        <h3>SharePoint → RAG pipeline</h3>
+        <p>Weekly Lambda sync pulling SharePoint into S3, feeding a Bedrock Knowledge Base behind an internal AI chat tool.</p>
+        <div class="chips"><span>Python</span><span>Terraform</span><span>Bedrock</span></div>
+      </div>
+    </a>
+    <a class="card" href="https://github.com/NoahLaHaise/stock-MCP">
+      <div class="thumb"><canvas data-seed="2"></canvas><span class="num">02</span></div>
+      <div class="body">
+        <h3>Stock MCP</h3>
+        <p>An MCP server exposing real-time market data and technical indicators to an LLM over remote HTTP.</p>
+        <div class="chips"><span>FastMCP</span><span>Cloudflare</span></div>
+      </div>
+    </a>
+    <a class="card" href="https://github.com/NoahLaHaise/RaspAir-Monitor">
+      <div class="thumb"><canvas data-seed="3"></canvas><span class="num">03</span></div>
+      <div class="body">
+        <h3>Air Quality Monitor</h3>
+        <p>Pi Zero 2W + Sensirion SEN66 streaming CO₂, VOC and particulates to a live dashboard with history.</p>
+        <div class="chips"><span>Raspberry Pi</span><span>Flask</span><span>JS</span></div>
+      </div>
+    </a>
+  </div>
+  <a href="#" class="more">All projects →</a>
+</section>
+
+<footer id="contact">
+  <span>© 2026 Noah LaHaise — Concept 02 / Prism</span>
+  <nav><a href="https://github.com/NoahLaHaise">GitHub</a><a href="https://www.linkedin.com/in/noah-lahaise-886312169/">LinkedIn</a><a href="#">Email</a></nav>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------- WebGL hero ---------------- */
+  const cv = document.getElementById('gl');
+  const gl = cv.getContext('webgl', { antialias: false, premultipliedAlpha: false });
+  const FRAG = `
+  precision highp float;
+  uniform vec2 res; uniform float t; uniform vec2 m; uniform float dither; uniform float px;
+  float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+  float noise(vec2 p){ vec2 i = floor(p), f = fract(p); vec2 u = f*f*(3.-2.*f);
+    return mix(mix(hash(i), hash(i+vec2(1,0)), u.x), mix(hash(i+vec2(0,1)), hash(i+vec2(1,1)), u.x), u.y); }
+  float fbm(vec2 p){ float v = 0., a = .5; for (int i = 0; i < 5; i++){ v += a*noise(p); p *= 2.03; a *= .5; } return v; }
+  float bayer2(vec2 a){ a = floor(a); return fract(a.x/2. + a.y*a.y*.75); }
+  float bayer4(vec2 a){ return bayer2(.5*a)*.25 + bayer2(a); }
+  float bayer8(vec2 a){ return bayer4(.5*a)*.25 + bayer2(a); }
+  // caustic dispersion across a band: violet/blue outside -> white core -> amber/red inside
+  vec3 spectrum(float x){
+    x = clamp(x, -1., 1.);
+    vec3 c = mix(vec3(.35,.3,1.), vec3(.4,.85,1.), smoothstep(-1., -.45, x));
+    c = mix(c, vec3(1.), smoothstep(-.45, 0., x));
+    c = mix(c, vec3(1.,.85,.35), smoothstep(0., .45, x));
+    return mix(c, vec3(1.,.45,.25), smoothstep(.45, 1., x));
+  }
+
+  void main(){
+    vec2 cell = floor(gl_FragCoord.xy / px) * px + px*.5;
+    vec2 frag = mix(gl_FragCoord.xy, cell, dither);
+    vec2 uv = frag / res;
+    vec2 p = (frag - .5*res) / res.y;
+
+    // vertical light curtains (long exposure streaks)
+    float s = fbm(vec2(uv.x*18., uv.y*.7 - t*.03));
+    s = mix(s, fbm(vec2(uv.x*42. + 3., uv.y*1.2 + t*.02)), .35);
+    float streak = smoothstep(.35, .85, s);
+    float glow = smoothstep(.0, 1., 1. - length((uv - vec2(.62, .55)) * vec2(1.2, .9)));
+
+    vec3 deep  = vec3(.33, .42, .82);
+    vec3 lav   = vec3(.74, .70, .95);
+    vec3 ice   = vec3(.83, .93, .97);
+    vec3 cream = vec3(1., .96, .88);
+    vec3 col = mix(deep, lav, smoothstep(.1, .7, uv.y + .2*s));
+    col = mix(col, ice, streak*.8);
+    col = mix(col, cream, smoothstep(.55, 1., uv.x + uv.y*.3) * .55);
+    col += glow * streak * .25;
+
+    // prismatic caustic — a wobbling refracted loop, dispersed into a spectrum
+    vec2 c = vec2(.05, -.05) + (m - .5) * vec2(.35, -.35);
+    vec2 q = p - c;
+    float ang = atan(q.y, q.x);
+    float r = .34 + .07*sin(ang*3. + t*.35) + .04*sin(ang*7. - t*.5) + .05*(fbm(vec2(ang*2., t*.12)) - .5);
+    float d = length(q*vec2(1., .82)) - r;
+    float w = .016;
+    float band = exp(-d*d/(w*w*1.4));
+    col = mix(col, spectrum(d/w), band*.9);
+    // second, fainter echo
+    float d2 = length((q - vec2(.12, .08))*vec2(1., .82)) - r*.92;
+    col = mix(col, spectrum(d2/w), exp(-d2*d2/(w*w*1.4)) * .45);
+
+    // ordered dither to a reduced palette
+    if (dither > .5) {
+      float b = bayer8(gl_FragCoord.xy / px) - .5;
+      float L = 5.;
+      col = floor(col*L + .5 + b) / L;
+    }
+    gl_FragColor = vec4(col, 1.);
+  }`;
+  const VERT = 'attribute vec2 a; void main(){ gl_Position = vec4(a, 0., 1.); }';
+
+  let uRes, uT, uM, uD, uPx, mode = 1, mouse = [0.5, 0.5], target = [0.5, 0.5];
+  if (gl) {
+    const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s)); return s; };
+    const prog = gl.createProgram();
+    gl.attachShader(prog, sh(gl.VERTEX_SHADER, VERT));
+    gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FRAG));
+    gl.linkProgram(prog); gl.useProgram(prog);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(prog, 'a');
+    gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    uRes = gl.getUniformLocation(prog, 'res'); uT = gl.getUniformLocation(prog, 't');
+    uM = gl.getUniformLocation(prog, 'm'); uD = gl.getUniformLocation(prog, 'dither');
+    uPx = gl.getUniformLocation(prog, 'px');
+  }
+  function resize() {
+    const dpr = Math.min(devicePixelRatio || 1, 2), r = cv.getBoundingClientRect();
+    cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr);
+    if (gl) gl.viewport(0, 0, cv.width, cv.height);
+  }
+  function draw(now) {
+    if (!gl) return;
+    mouse[0] += (target[0] - mouse[0]) * .06; mouse[1] += (target[1] - mouse[1]) * .06;
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    gl.uniform2f(uRes, cv.width, cv.height); gl.uniform1f(uT, now / 1000);
+    gl.uniform2f(uM, mouse[0], mouse[1]); gl.uniform1f(uD, mode); gl.uniform1f(uPx, Math.round(3 * dpr));
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+  (function loop(now = 0) { draw(reduce ? 4000 : now); if (!reduce) requestAnimationFrame(loop); })();
+  resize(); addEventListener('resize', () => { resize(); if (reduce) draw(4000); });
+  cv.parentElement.addEventListener('pointermove', e => {
+    const r = cv.getBoundingClientRect();
+    target = [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height];
+  });
+  document.querySelectorAll('.ctrls button').forEach(b => b.addEventListener('click', () => {
+    mode = +b.dataset.mode;
+    document.querySelectorAll('.ctrls button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    if (reduce) draw(4000);
+  }));
+
+  /* ---------------- dithered card thumbnails (2D, cheap) ---------------- */
+  const B = [0,32,8,40,2,34,10,42,48,16,56,24,50,18,58,26,12,44,4,36,14,46,6,38,60,28,52,20,62,30,54,22,3,35,11,43,1,33,9,41,51,19,59,27,49,17,57,25,15,47,7,39,13,45,5,37,63,31,55,23,61,29,53,21];
+  const PAL = [[90,92,230],[150,150,240],[200,214,245],[247,244,236]];
+  function thumb(c) {
+    const seed = +c.dataset.seed, r = c.getBoundingClientRect();
+    const w = Math.max(1, Math.round(r.width / 3)), h = Math.max(1, Math.round(r.height / 3));
+    c.width = w; c.height = h;
+    const x = c.getContext('2d'), im = x.createImageData(w, h), d = im.data;
+    for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {
+      const u = i / w, v = j / h;
+      let g;
+      if (seed === 1) g = 0.5 + 0.5 * Math.sin(u * 14 + Math.sin(v * 5) * 2) * (1 - v) + v * 0.3;            // stacked docs / waves
+      else if (seed === 2) g = Math.abs(v - 0.55 - 0.18 * Math.sin(u * 9) * Math.cos(u * 3.1)) < 0.06 ? 1 : 0.15 + u * 0.5; // price line
+      else { const dx = u - 0.5, dy = (v - 0.5) * h / w; g = 0.5 + 0.5 * Math.cos(Math.hypot(dx, dy) * 40); g *= 1 - v * 0.4; } // rings
+      const lvl = Math.min(3, Math.max(0, Math.floor(g * 3 + B[(j & 7) * 8 + (i & 7)] / 64)));
+      const col = PAL[lvl], p = (j * w + i) * 4;
+      d[p] = col[0]; d[p + 1] = col[1]; d[p + 2] = col[2]; d[p + 3] = 255;
+    }
+    x.putImageData(im, 0, 0);
+  }
+  const thumbs = document.querySelectorAll('.thumb canvas');
+  const drawThumbs = () => thumbs.forEach(thumb);
+  drawThumbs(); addEventListener('resize', drawThumbs);
+
+  /* ---------------- dot-matrix scramble on the hero word ---------------- */
+  const el = document.getElementById('scramble'), words = ['intelligent', 'quiet', 'useful', 'durable', 'intelligent'];
+  const glyphs = '01#%&*+=<>/\\▚▞';
+  let wi = 0;
+  function scrambleTo(word) {
+    let f = 0; const from = el.textContent, len = Math.max(from.length, word.length);
+    const id = setInterval(() => {
+      let out = '';
+      for (let i = 0; i < len; i++) {
+        if (f / 2 > i) out += word[i] || '';
+        else out += Math.random() < .5 ? glyphs[(Math.random() * glyphs.length) | 0] : (from[i] || '');
+      }
+      el.textContent = out; f++;
+      if (f / 2 > len) { clearInterval(id); el.textContent = word; }
+    }, 40);
+  }
+  if (!reduce) setInterval(() => { wi = (wi + 1) % (words.length - 1); scrambleTo(words[wi]); }, 3600);
+})();
+</script>
+</body>
+</html>
