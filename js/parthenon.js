@@ -1,7 +1,7 @@
 /* =========================================================================
    Parthenon plate — a raymarched Greek temple in drifting fog, rendered in
    WebGL at one fragment per dither cell and Bayer-dithered to an ultramarine
-   palette. Any <canvas data-parthenon> on the page gets one.
+   palette (night ramp: page black -> ultramarine -> pale haze). Any <canvas data-parthenon> on the page gets one.
 
    Per-canvas camera (all optional, defaults = home page view):
      data-yaw    viewing angle around the temple, radians (0 = long side, 1.57 = front)
@@ -119,10 +119,10 @@
 
   vec3 ramp(float b){
     b = clamp(b, 0., 1.);
-    vec3 c = mix(vec3(.08,.08,.38), vec3(.15,.15,.65), smoothstep(0., .22, b));   // deep -> ultramarine ink
-    c = mix(c, vec3(.40,.44,.88), smoothstep(.2, .5, b));                           // periwinkle
-    c = mix(c, vec3(.72,.70,.95), smoothstep(.45, .75, b));                         // lavender
-    return mix(c, vec3(.94,.93,.90), smoothstep(.72, 1., b));                       // paper
+    vec3 c = mix(vec3(0.,0.,.03), vec3(.08,.08,.42), smoothstep(0., .22, b));   // page black -> deep ultramarine
+    c = mix(c, vec3(.18,.18,.78), smoothstep(.2, .5, b));                           // ultramarine
+    c = mix(c, vec3(.47,.50,.97), smoothstep(.45, .75, b));                         // periwinkle
+    return mix(c, vec3(.82,.83,1.), smoothstep(.72, 1., b));                        // moonlit haze
   }
 
   void main(){
@@ -147,7 +147,7 @@
     vec3 sun = normalize(vec3(-.8 + .22*sin(t*.06), .5 + .07*sin(t*.045), -.28 + .12*cos(t*.06)));
 
     // sky: deep at the zenith, washing out toward the horizon, faint drifting cloud
-    float sky = mix(.80, .10, smoothstep(-.12, .5, p.y));
+    float sky = mix(.76, .0, smoothstep(-.12, .55, p.y));
     sky += .07 * (fbm(vec2(p.x*2.2 + t*.006, p.y*7.) ) - .5);
 
     // moon / sphere, engraved like the reference prints
@@ -191,13 +191,13 @@
       float low = exp(-max(pos.y + 1.6, 0.) * .38) * smoothstep(.3, .8, fbm(pos.xz*.035 + vec2(t*.012, t*.005)));
       float fog = clamp(haze + low*.75*(1. - haze), 0., 1.);
       if (h.y == 4.) fog *= .35;
-      b = mix(b, .86, fog);
+      b = mix(b, .8, fog);
     }
 
     // breathing mist band across the horizon, independent of geometry
     float by = (p.y + .16) / .12;
     float band = exp(-by*by) * (.35 + .25*fbm(vec2(p.x*1.5 - t*.01, t*.004)));
-    b = mix(b, .88, band * .55);
+    b = mix(b, .82, band * .55);
 
     b *= mix(1., .72, 1. - smoothstep(-.5, -.18, p.y));        // weight the foreground, like the reference prints
 

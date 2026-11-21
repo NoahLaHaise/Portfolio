@@ -1,7 +1,17 @@
 /* =========================================================================
-   Shared page behaviour: the ordered-dither glow behind the footer.
+   Shared page behaviour: the ordered-dither glow behind the footer, and the
+   local-time readout in the header.
    ========================================================================= */
 (() => {
+  // ---- header clock (Jacksonville time) ----
+  const clock = document.querySelector('[data-clock]');
+  if (clock) {
+    const fmt = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', hour12: false });
+    const tick = () => { clock.textContent = `JAX ${fmt.format(new Date())} ET`; };
+    tick(); setInterval(tick, 15000);
+  }
+
+  // ---- footer dither ----
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fc = document.querySelector('footer.end canvas');
   if (!fc) return;
@@ -20,10 +30,13 @@
     const d = img.data;
     for (let j = 0; j < fh; j++) for (let i = 0; i < fw; i++) {
       const u = i / fw, v = j / fh;
-      const g = 0.55 * Math.exp(-((u - mx) ** 2) * 6 - ((v - 1.15) ** 2) * 3)
-              + 0.12 * Math.sin(u * 9 + t * 0.4 + v * 3) * v;
+      const g = 0.5 * Math.exp(-((u - mx) ** 2) * 5 - ((v - 1.2) ** 2) * 3.2)
+              + 0.1 * Math.sin(u * 9 + t * 0.4 + v * 3) * v;
       const p = (j * fw + i) * 4;
-      d[p] = 90; d[p + 1] = 90; d[p + 2] = 220; d[p + 3] = g * 64 > B[(j & 7) * 8 + (i & 7)] ? 255 : 0;
+      const lit = g * 64 > B[(j & 7) * 8 + (i & 7)];
+      const hot = g * 64 > B[(j & 7) * 8 + (i & 7)] + 22;   // a second, brighter tier near the core
+      d[p] = hot ? 138 : 42; d[p + 1] = hot ? 143 : 42; d[p + 2] = hot ? 248 : 208;
+      d[p + 3] = lit ? (hot ? 170 : 210) : 0;
     }
     fx.putImageData(img, 0, 0);
   }
