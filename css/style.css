@@ -285,6 +285,9 @@ footer.end canvas { position: absolute; inset: 0; width: 100%; height: 100%; ima
   .end-inner { grid-template-columns: 1fr; }
   .end .row { justify-content: flex-start; }
 }
+@media (max-width: 600px) {
+  .plate { height: clamp(320px, 90vw, 420px); }   /* temple spans the width on phones; trim the extra fog above/below */
+}
 @media (max-width: 480px) {
   .skills { grid-template-columns: 1fr; }
   .project .side { flex-direction: column; gap: .8rem; }
