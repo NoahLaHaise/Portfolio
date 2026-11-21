@@ -127,11 +127,18 @@
 
   void main(){
     float aspect = res.x / res.y;
-    vec2 p = (gl_FragCoord.xy - .5*res) / res.y;
+    // Narrow plates (phones): instead of dollying further back — which puts the camera behind the
+    // foreground dunes and deep into the haze — widen the lens. Working in these zoomed screen
+    // coordinates keeps the viewpoint, sky, mist band and moon exactly as on desktop, with more
+    // sky above and ground below. Plates at aspect >= 1.72 (all desktop widths) are unaffected.
+    const float FIT = 1.72;
+    float zoom = max(1., FIT / aspect);
+    vec2 p = (gl_FragCoord.xy - .5*res) / res.y * zoom;
+    float aspectV = aspect * zoom;                             // aspect of the virtual (desktop-equivalent) frame
 
     // camera: three-quarter view of the west front, eye level, drifting a hair with the cursor
     float yaw = cam.x + (m.x - .5) * .05;
-    float D = cam.y * max(1., 1.9 / aspect);
+    float D = cam.y * max(1., 1.9 / max(aspect, FIT));
     vec3 tgt = vec3(0., cam.z, 0.);
     vec3 ro = tgt + vec3(-sin(yaw) * D, cam.w + (m.y - .5) * -1.2, -cos(yaw) * D);
     vec3 fw = normalize(tgt - ro);
@@ -151,7 +158,7 @@
     sky += .07 * (fbm(vec2(p.x*2.2 + t*.006, p.y*7.) ) - .5);
 
     // moon / sphere, engraved like the reference prints
-    vec2 mp = vec2(.5*aspect*moon.x, moon.y), md = (p - mp) / max(moon.z, 1e-3);
+    vec2 mp = vec2(.5*aspectV*moon.x, moon.y), md = (p - mp) / max(moon.z, 1e-3);
     float mr = dot(md, md);
     if (moon.z > 0. && mr < 1.){
       vec3 n = vec3(md.x, md.y, sqrt(1. - mr));
